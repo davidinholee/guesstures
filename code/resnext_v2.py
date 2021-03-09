@@ -26,24 +26,24 @@ def conv_layer(inp, filter, kernel, stride, padding='SAME', layer_name="conv"):
         network = tf.compat.v1.layers.conv2d(inputs=inp, use_bias=False, filters=filter, kernel_size=kernel, strides=stride, padding=padding)
         return network
 
-def Global_Average_Pooling(x):
-    return tf.compat.v1.nn.avg_pool(x, name='Global_avg_pooling')
+def Global_Average_Pooling(x, pool_size=[2,2], stride=2, padding='SAME'):
+    return tf.compat.v1.nn.avg_pool(x, name='Global_avg_pooling', strides=stride, ksize=pool_size, padding=padding)
 
 def Average_pooling(x, pool_size=[2,2], stride=2, padding='SAME'):
     return tf.compat.v1.layers.average_pooling2d(inputs=x, pool_size=pool_size, strides=stride, padding=padding)
 
-def Max_Pooling(inp, stride=2, padding='SAME', name="max_pool"):
-    return tf.nn.max_pool2d(input=inp, strides=stride)
+def Max_Pooling(inp, stride=2, pool_size=[2,2], padding='SAME', name="max_pool"):
+    return tf.nn.max_pool2d(input=inp, strides=stride, ksize=pool_size, padding=padding)
 
 def true_batch(x, training, scope): 
-    tf.compat.v1.layers.batch_normalization(
+    return tf.compat.v1.layers.batch_normalization(
                     inputs=x, training=training, reuse=None,
                     momentum=0.9,
                     center=True,
                     scale=True)
 
 def false_batch(x, training,scope):
-    tf.compat.v1.layers.batch_normalization(
+    return tf.compat.v1.layers.batch_normalization(
         inputs=x, training=training, reuse=True,
         # scope=scope,
         # updates_collections=None,
@@ -184,8 +184,9 @@ class ResNeXt():
         x = self.conv_batch(x, filter_num=512, stride_num=2, scope='conv3')
         x = self.conv_batch(x, filter_num=1024, stride_num=2, scope='conv4')
         x = Global_Average_Pooling(x)
-        x = x.reshape(x, (x.size(0), -1))
+        #x = Flatten(x)
         x = Linear(x)
+        print(x.shape)
 
         # Resnext bottleneck
         residual = x
@@ -194,16 +195,23 @@ class ResNeXt():
         x = Relu(x)
         x = self.conv_batch(x, filter_num=512, stride_num=2, scope='bottlenextconv3')
 
-        x += residual
+        #x += residual
         x = Relu(x)
 
         return x
 
 
-if __name__ == "__main__":
+def ohe(ls):
+    ohe_ls = np.zeros((ls.shape[0], CLASS_NUM))
+    for i,l in enumerate(ls):
+        print(i,l)
+        ohe_ls[i,int(l)] = 1
+    return ohe_ls
 
+if __name__ == "__main__":
     print("Beginning preprocesing...")
     x, y = prepare_data()
+    y = ohe(y)
     train_x = x
     train_y = y
     test_x = x
@@ -211,6 +219,7 @@ if __name__ == "__main__":
     print("Preprocessing finished!")
     
     tf.compat.v1.disable_eager_execution()
+    tf.compat.v1.disable_v2_behavior()
     x = tf.compat.v1.placeholder(tf.float32, shape=[None, IMAGE_SIZE[0], IMAGE_SIZE[1], IMAGE_CHANNELS])
     label = tf.compat.v1.placeholder(tf.float32, shape=[None, CLASS_NUM])
 
@@ -256,8 +265,6 @@ if __name__ == "__main__":
                 else:
                     batch_x = train_x[pre_index:]
                     batch_y = train_y[pre_index:]
-
-                batch_x = data_augmentation(batch_x)
 
                 train_feed_dict = {
                     x: batch_x,

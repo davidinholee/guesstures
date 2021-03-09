@@ -1,7 +1,7 @@
 DEVICE = "gpu"   # cpu or gpu
 
 # some training parameters
-EPOCHS = 2 #50
+EPOCHS = 50 #50
 BATCH_SIZE = 8
 NUM_CLASSES = 14
 IMAGE_HEIGHT = 240

@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from keras.preprocessing import image
+from PIL import Image
 
 LABELS = ["D0X", "B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11"]
 IMAGE_SIZE = (640, 480)
@@ -48,22 +48,27 @@ def read_videos(directories, label_dict):
     # Get sizes of directories
     tot_size = 0
     for d in directories:
-        tot_size += len(os.listdir(d))
+        tot_size += (len(os.listdir(d)) - 1)
 
     # Read in each frame one by one
-    data = np.zeros((tot_size, 640, 480, 3))
+    data = np.zeros((tot_size, 240, 320, 3))
     labels = np.zeros((tot_size))
     i = 0
     for d in directories:
         for n in os.listdir(d):
-            img = image.load_img(d+n, target_size=IMAGE_SIZE)
-            # Image data
-            data[i] = np.asarray(img)
-            # Label
-            vid_name = d.split("/")[-1]
-            frame_n = int(n.split("_")[-1].split(".")[0])
-            frames, labels = label_dict[vid_name]
-            labels[i] = get_label_from_frame(frames, labels, frame_n)
-            i += 1
+            if "jpg" in n:
+                img = Image.open(d+"/"+n)
+                # Image data
+                data[i] = np.asarray(img)
+                # Label
+                vid_name = d.split("/")[-1]
+                frame_n = int(n.split("_")[-1].split(".")[0])
+                fs, ls = label_dict[vid_name]
+                labels[i] = LABELS.index(get_label_from_frame(fs, ls, frame_n))
+                i += 1
     
     return data, labels
+
+if __name__ == "__main__":
+    annos = parse_annotations("data/annotations.txt")
+    data, labels = read_videos(["data/1CM1_1_R_#217"], annos)

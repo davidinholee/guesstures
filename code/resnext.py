@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tflearn.layers.conv import global_avg_pool
-from tensorflow.contrib.layers import batch_norm, flatten
+from tensorflow.keras.layers import BatchNormalization, Flatten
 from tensorflow.contrib.framework import arg_scope
 from preprocessing import *
 import numpy as np
@@ -43,8 +43,8 @@ def Average_pooling(x, pool_size=[2,2], stride=2, padding='SAME'):
 def Max_Pooling(in_put, stride=2, padding='SAME', name="max_pool"):
     return tf.nn.max_pool(input=in_put, strides=stride)
 
-def Batch_Normalization(x, training, scope):
-    with arg_scope([batch_norm],
+def BatchNormalizationalization(x, training, scope):
+    with arg_scope([BatchNormalization],
                    scope=scope,
                    updates_collections=None,
                    decay=0.9,
@@ -52,8 +52,8 @@ def Batch_Normalization(x, training, scope):
                    scale=True,
                    zero_debias_moving_mean=True) :
         return tf.cond(training,
-                       lambda : batch_norm(inputs=x, is_training=training, reuse=None),
-                       lambda : batch_norm(inputs=x, is_training=training, reuse=True))
+                       lambda : BatchNormalization(inputs=x, is_training=training, reuse=None),
+                       lambda : BatchNormalization(inputs=x, is_training=training, reuse=True))
 
 def Relu(x):
     return tf.nn.relu(x)
@@ -103,7 +103,7 @@ class ResNeXt():
     def first_layer(self, x, scope):
         with tf.name_scope(scope) :
             x = conv_layer(x, filter=64, kernel=[3, 3], stride=1, layer_name=scope+'_conv1')
-            x = Batch_Normalization(x, training=self.training, scope=scope+'_batch1')
+            x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             x = Relu(x)
 
             return x
@@ -111,7 +111,7 @@ class ResNeXt():
     def conv_batch(self, x, filter_num, stride_num, scope):
         with tf.name_scope(scope):
             x = conv_layer(x, filter=filter_num, kernel=[1,1], stride=stride_num, layer_name=scope+'_conv1')
-            x = Batch_Normalization(x, training=self.training, scope=scope+'_batch1')
+            x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             # x = Relu(x)
 
             return x
@@ -119,18 +119,18 @@ class ResNeXt():
     def transform_layer(self, x, stride, scope):
         with tf.name_scope(scope) :
             x = conv_layer(x, filter=depth, kernel=[1,1], stride=stride, layer_name=scope+'_conv1')
-            x = Batch_Normalization(x, training=self.training, scope=scope+'_batch1')
+            x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             x = Relu(x)
 
             x = conv_layer(x, filter=depth, kernel=[3,3], stride=1, layer_name=scope+'_conv2')
-            x = Batch_Normalization(x, training=self.training, scope=scope+'_batch2')
+            x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch2')
             x = Relu(x)
             return x
 
     def transition_layer(self, x, out_dim, stride, scope):
         with tf.name_scope(scope):
             x = conv_layer(x, filter=out_dim, kernel=[1,1], stride=1, layer_name=scope+'_conv1')
-            x = Batch_Normalization(x, training=self.training, scope=scope+'_batch1')
+            x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             # x = Relu(x)
 
             return x
@@ -195,7 +195,7 @@ class ResNeXt():
         #x = self.layer2(x)
         x = self.conv_batch(x, filter_num=512, stride_num=2, scope='conv3')
         #x = self.layer3(x)
-        x = self.conv_batch(x, filter_num=1024, stride_num=, scope='conv4')
+        x = self.conv_batch(x, filter_num=1024, stride_num=2, scope='conv4')
         #x = self.layer4(x)
         x = Global_Average_Pooling(x)
         #x = self.avgpool(x)
@@ -208,11 +208,11 @@ class ResNeXt():
         residual = x
         x = self.first_layer(x, scope='first_layer_num2')
         #x = self.conv1(input_x)
-        #x = self.batch_norm(x)
+        #x = self BatchNormalization(x)
         #x = self.relu(x)
         x = self.conv_batch(x, filter_num=256, stride_num=2, scope='bottlenextconv2')
         #x = self.conv2(x)
-        #x = self.batch_norm(x)
+        #x = self BatchNormalization(x)
         x = Relu(x)
         #x = self.relu(x)
 
@@ -233,7 +233,7 @@ class ResNeXt():
         #x = self.residual_layer(x, out_dim=256, layer_num='3')
 
         #x = Global_Average_Pooling(x)
-        #x = flatten(x)
+        #x = Flatten(x)
         #x = Linear(x)
 
         return x

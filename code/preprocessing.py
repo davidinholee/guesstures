@@ -73,7 +73,8 @@ def prepare_data():
     '''
     Preprocesses the data we want for training.
     '''
-
+    
+    annos = parse_annotations("data/annotations.txt")
     return read_videos(["data/1CM1_1_R_#217"], annos)
 
 if __name__ == "__main__":

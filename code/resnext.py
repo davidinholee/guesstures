@@ -1,7 +1,6 @@
 import tensorflow as tf
 from tflearn.layers.conv import global_avg_pool
 from tensorflow.keras.layers import BatchNormalization, Flatten
-from tensorflow.contrib.framework import arg_scope
 from preprocessing import *
 import numpy as np
 
@@ -44,16 +43,21 @@ def Max_Pooling(in_put, stride=2, padding='SAME', name="max_pool"):
     return tf.nn.max_pool(input=in_put, strides=stride)
 
 def BatchNormalizationalization(x, training, scope):
-    with arg_scope([BatchNormalization],
-                   scope=scope,
-                   updates_collections=None,
-                   decay=0.9,
-                   center=True,
-                   scale=True,
-                   zero_debias_moving_mean=True) :
-        return tf.cond(training,
-                       lambda : BatchNormalization(inputs=x, is_training=training, reuse=None),
-                       lambda : BatchNormalization(inputs=x, is_training=training, reuse=True))
+    return tf.cond(training,
+        lambda : BatchNormalization(inputs=x, is_training=training, reuse=None,
+                scope=scope,
+                updates_collections=None,
+                decay=0.9,
+                center=True,
+                scale=True,
+                zero_debias_moving_mean=True),
+        lambda : BatchNormalization(inputs=x, is_training=training, reuse=True,
+                scope=scope,
+                updates_collections=None,
+                decay=0.9,
+                center=True,
+                scale=True,
+                zero_debias_moving_mean=True))
 
 def Relu(x):
     return tf.nn.relu(x)
@@ -239,91 +243,97 @@ class ResNeXt():
         return x
 
 
-train_x, train_y, test_x, test_y = prepare_data()
-train_x, test_x = color_preprocessing(train_x, test_x)
+if __name__ == "__main__":
+
+    print("Beginning preprocesing...")
+    x, y = prepare_data()
+    train_x = x
+    train_y = y
+    test_x = x
+    test_y = y
+    print("Preprocessing finished!")
+
+    # image_size = 32, img_channels = 3, class_num = 10 in cifar10 (CHECK PREPROCESSING FOR TRUE IMAGE SIZES)
+    x = tf.placeholder(tf.float32, shape=[None, image_size, image_size, img_channels])
+    label = tf.placeholder(tf.float32, shape=[None, class_num])
+
+    training_flag = tf.placeholder(tf.bool)
 
 
-# image_size = 32, img_channels = 3, class_num = 10 in cifar10
-x = tf.placeholder(tf.float32, shape=[None, image_size, image_size, img_channels])
-label = tf.placeholder(tf.float32, shape=[None, class_num])
+    learning_rate = tf.placeholder(tf.float32, name='learning_rate')
 
-training_flag = tf.placeholder(tf.bool)
+    logits = ResNeXt(x, training=training_flag).model
+    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=label, logits=logits))
 
+    l2_loss = tf.add_n([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
+    optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=momentum, use_nesterov=True)
+    train = optimizer.minimize(cost + l2_loss * weight_decay)
 
-learning_rate = tf.placeholder(tf.float32, name='learning_rate')
+    correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(label, 1))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-logits = ResNeXt(x, training=training_flag).model
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=label, logits=logits))
+    saver = tf.train.Saver(tf.global_variables())
 
-l2_loss = tf.add_n([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
-optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=momentum, use_nesterov=True)
-train = optimizer.minimize(cost + l2_loss * weight_decay)
+    with tf.Session() as sess:
+        ckpt = tf.train.get_checkpoint_state('./model')
+        if ckpt and tf.train.checkpoint_exists(ckpt.model_checkpoint_path):
+            saver.restore(sess, ckpt.model_checkpoint_path)
+        else:
+            sess.run(tf.global_variables_initializer())
 
-correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(label, 1))
-accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+        summary_writer = tf.summary.FileWriter('./logs', sess.graph)
 
-saver = tf.train.Saver(tf.global_variables())
+        epoch_learning_rate = init_learning_rate
+        for epoch in range(1, total_epochs + 1):
+            if epoch == (total_epochs * 0.5) or epoch == (total_epochs * 0.75):
+                epoch_learning_rate = epoch_learning_rate / 10
 
-with tf.Session() as sess:
-    ckpt = tf.train.get_checkpoint_state('./model')
-    if ckpt and tf.train.checkpoint_exists(ckpt.model_checkpoint_path):
-        saver.restore(sess, ckpt.model_checkpoint_path)
-    else:
-        sess.run(tf.global_variables_initializer())
+            pre_index = 0
+            train_acc = 0.0
+            train_loss = 0.0
 
-    summary_writer = tf.summary.FileWriter('./logs', sess.graph)
+            for step in range(1, iteration + 1):
+                if pre_index + batch_size < 50000:
+                    batch_x = train_x[pre_index: pre_index + batch_size]
+                    batch_y = train_y[pre_index: pre_index + batch_size]
+                else:
+                    batch_x = train_x[pre_index:]
+                    batch_y = train_y[pre_index:]
 
-    epoch_learning_rate = init_learning_rate
-    for epoch in range(1, total_epochs + 1):
-        if epoch == (total_epochs * 0.5) or epoch == (total_epochs * 0.75):
-            epoch_learning_rate = epoch_learning_rate / 10
+                batch_x = data_augmentation(batch_x)
 
-        pre_index = 0
-        train_acc = 0.0
-        train_loss = 0.0
+                train_feed_dict = {
+                    x: batch_x,
+                    label: batch_y,
+                    learning_rate: epoch_learning_rate,
+                    training_flag: True
+                }
 
-        for step in range(1, iteration + 1):
-            if pre_index + batch_size < 50000:
-                batch_x = train_x[pre_index: pre_index + batch_size]
-                batch_y = train_y[pre_index: pre_index + batch_size]
-            else:
-                batch_x = train_x[pre_index:]
-                batch_y = train_y[pre_index:]
+                _, batch_loss = sess.run([train, cost], feed_dict=train_feed_dict)
+                batch_acc = accuracy.eval(feed_dict=train_feed_dict)
 
-            batch_x = data_augmentation(batch_x)
-
-            train_feed_dict = {
-                x: batch_x,
-                label: batch_y,
-                learning_rate: epoch_learning_rate,
-                training_flag: True
-            }
-
-            _, batch_loss = sess.run([train, cost], feed_dict=train_feed_dict)
-            batch_acc = accuracy.eval(feed_dict=train_feed_dict)
-
-            train_loss += batch_loss
-            train_acc += batch_acc
-            pre_index += batch_size
+                train_loss += batch_loss
+                train_acc += batch_acc
+                pre_index += batch_size
 
 
-        train_loss /= iteration # average loss
-        train_acc /= iteration # average accuracy
+            train_loss /= iteration # average loss
+            train_acc /= iteration # average accuracy
 
-        train_summary = tf.Summary(value=[tf.Summary.Value(tag='train_loss', simple_value=train_loss),
-                                          tf.Summary.Value(tag='train_accuracy', simple_value=train_acc)])
+            train_summary = tf.Summary(value=[tf.Summary.Value(tag='train_loss', simple_value=train_loss),
+                                            tf.Summary.Value(tag='train_accuracy', simple_value=train_acc)])
 
-        test_acc, test_loss, test_summary = Evaluate(sess)
+            test_acc, test_loss, test_summary = Evaluate(sess)
 
-        summary_writer.add_summary(summary=train_summary, global_step=epoch)
-        summary_writer.add_summary(summary=test_summary, global_step=epoch)
-        summary_writer.flush()
+            summary_writer.add_summary(summary=train_summary, global_step=epoch)
+            summary_writer.add_summary(summary=test_summary, global_step=epoch)
+            summary_writer.flush()
 
-        line = "epoch: %d/%d, train_loss: %.4f, train_acc: %.4f, test_loss: %.4f, test_acc: %.4f \n" % (
-            epoch, total_epochs, train_loss, train_acc, test_loss, test_acc)
-        print(line)
+            line = "epoch: %d/%d, train_loss: %.4f, train_acc: %.4f, test_loss: %.4f, test_acc: %.4f \n" % (
+                epoch, total_epochs, train_loss, train_acc, test_loss, test_acc)
+            print(line)
 
-        with open('logs.txt', 'a') as f:
-            f.write(line)
+            with open('logs.txt', 'a') as f:
+                f.write(line)
 
-        saver.save(sess=sess, save_path='./model/ResNeXt.ckpt')
+            saver.save(sess=sess, save_path='./model/ResNeXt.ckpt')

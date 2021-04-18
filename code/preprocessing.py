@@ -3,9 +3,9 @@ import numpy as np
 from PIL import Image
 
 LABELS = ["D0X", "B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11"]
-IMAGE_SIZE = (640, 480)
+IMAGE_SIZE = (240, 320)
 IMAGE_CHANNELS = 3
-CLASS_NUM = 3
+CLASS_NUM = 14
 
 def parse_annotations(filepath):
     '''

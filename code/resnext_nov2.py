@@ -3,7 +3,7 @@ import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 #import tensorflow.compat.v1 as tf
 #tf.disable_v2_behavior()
-#from tensorflow.keras.layers import BatchNormalization, Flatten
+from tensorflow.keras.layers import BatchNormalization, Flatten
 from preprocessing import *
 import numpy as np
 
@@ -39,29 +39,10 @@ def Average_pooling(x, pool_size=[2,2], stride=2, padding='SAME'):
 def Max_Pooling(inp, stride=2, padding='SAME', name="max_pool"):
     return tf.nn.max_pool2d(input=inp, strides=stride)
 
-def true_batch(x, training, scope): 
-    tf.layers.batch_normalization(
-                    inputs=x, training=training, reuse=None,
-                    momentum=0.9,
-                    center=True,
-                    scale=True)
-
-def false_batch(x, training,scope):
-    tf.layers.batch_normalization(
-        inputs=x, training=training, reuse=True,
-        # scope=scope,
-        # updates_collections=None,
-        momentum=0.9,
-        center=True,
-        scale=True
-        #zero_debias_moving_mean=True
-    )
-
 def MyBatchNormalization(x, training, scope):
-    with tf.variable_scope(scope):
-        return tf.cond(pred=training,
-            true_fn=lambda : true_batch(x, training, scope),
-            false_fn=lambda : false_batch(x, training, scope))
+        return tf.cond(training,
+                       lambda : tf.layers.BatchNormalization(inputs=x, is_training=training, scope=scope, decay=0.9, center=True, scale=True, reuse=None),
+                       lambda : tf.layers.BatchNormalization(inputs=x, is_training=training, scope=scope, decay=0.9, center=True, scale=True, reuse=True))
 
 def Relu(x):
     return tf.nn.relu(x)
@@ -180,6 +161,8 @@ class ResNeXt():
 
     def Build_ResNext(self, input_x):
         # Resnext: modeled after https://github.com/ahmetgunduz/Real-time-GesRec/blob/master/models/resnext.py
+        
+        """
         input_x = self.first_layer(input_x, scope='first_layer')
         x = Max_Pooling(input_x)
 
@@ -202,7 +185,18 @@ class ResNeXt():
         x = Relu(x)
 
         return x
+        """
+        input_x = self.first_layer(input_x, scope='first_layer')
 
+        x = self.residual_layer(input_x, out_dim=64, layer_num='1')
+        x = self.residual_layer(x, out_dim=128, layer_num='2')
+        x = self.residual_layer(x, out_dim=256, layer_num='3')
+
+        x = Global_Average_Pooling(x)
+        x = Flatten(x)
+        x = Linear(x)
+
+        return x
 
 if __name__ == "__main__":
 
@@ -222,7 +216,6 @@ if __name__ == "__main__":
     label = tf.placeholder(tf.float32, shape=[None, CLASS_NUM])
 
     training_flag = tf.placeholder(tf.bool)
-
 
     learning_rate = tf.placeholder(tf.float32, name='learning_rate')
 

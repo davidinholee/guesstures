@@ -4,10 +4,12 @@ from PIL import Image
 
 LABELS = ["D0X", "B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11"]
 IMAGE_SIZE = (640, 480)
+IMAGE_CHANNELS = 3
+CLASS_NUM = 3
 
 def parse_annotations(filepath):
     '''
-    Takes in the annotations file and produces a dictionary that can be queried 
+    Takes in the annotations file and produces a dictionary that can be queried
     for the geusture label corresponding to the video and frame in question.
     '''
 
@@ -24,7 +26,7 @@ def parse_annotations(filepath):
         else:
             # Video hasn't been added to dict yet
             label_dict[tokens[0]] = ([int(tokens[3])], [tokens[1]])
-    
+
     return label_dict
 
 def get_label_from_frame(frames, labels, frame):
@@ -66,14 +68,14 @@ def read_videos(directories, label_dict):
                 fs, ls = label_dict[vid_name]
                 labels[i] = LABELS.index(get_label_from_frame(fs, ls, frame_n))
                 i += 1
-    
+
     return data, labels
 
 def prepare_data():
     '''
     Preprocesses the data we want for training.
     '''
-    
+
     annos = parse_annotations("data/annotations.txt")
     return read_videos(["data/1CM1_1_R_#217"], annos)
 

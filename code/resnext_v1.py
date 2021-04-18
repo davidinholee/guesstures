@@ -4,9 +4,6 @@ from tensorflow.keras.layers import BatchNormalization, Flatten
 from preprocessing import *
 import numpy as np
 
-print(tf.__version__)
-
-
 weight_decay = 0.0005
 momentum = 0.9
 
@@ -30,36 +27,39 @@ test_iteration = 10
 
 total_epochs = 300
 
-def conv_layer(input, filter, kernel, stride, padding='SAME', layer_name="conv"):
-    with tf.name_scope(layer_name):
-        network = tf.layers.conv2d(inputs=input, use_bias=False, filters=filter, kernel_size=kernel, strides=stride, padding=padding)
+def conv_layer(inp, filter, kernel, stride, padding='SAME', layer_name="conv"):
+    with tf.compat.v1.name_scope(layer_name):
+        network = tf.compat.v1.layers.conv2d(inputs=inp, use_bias=False, filters=filter, kernel_size=kernel, strides=stride, padding=padding)
         return network
 
 def Global_Average_Pooling(x):
     return global_avg_pool(x, name='Global_avg_pooling')
 
 def Average_pooling(x, pool_size=[2,2], stride=2, padding='SAME'):
-    return tf.layers.average_pooling2d(inputs=x, pool_size=pool_size, strides=stride, padding=padding)
+    return tf.compat.v1.layers.average_pooling2d(inputs=x, pool_size=pool_size, strides=stride, padding=padding)
 
-def Max_Pooling(in_put, stride=2, padding='SAME', name="max_pool"):
-    return tf.nn.max_pool(input=in_put, strides=stride)
+def Max_Pooling(inp, stride=2, padding='SAME', name="max_pool"):
+    return tf.nn.max_pool2d(input=inp, strides=stride)
 
 def BatchNormalizationalization(x, training, scope):
-    return tf.cond(training,
-        lambda : BatchNormalization(inputs=x, is_training=training, reuse=None,
-                scope=scope,
-                updates_collections=None,
-                decay=0.9,
-                center=True,
-                scale=True,
-                zero_debias_moving_mean=True),
-        lambda : BatchNormalization(inputs=x, is_training=training, reuse=True,
-                scope=scope,
-                updates_collections=None,
-                decay=0.9,
-                center=True,
-                scale=True,
-                zero_debias_moving_mean=True))
+    with tf.compat.v1.variable_scope(scope): # TODO: I'm not sure if this is what we wanted to do with the scope arg
+        return tf.cond(pred=training,
+            true_fn=lambda : tf.compat.v1.layers.batch_normalization(
+                    inputs=x, training=training, reuse=None,
+                    # scope=scope,
+                    # updates_collections=None, # TODO: no clue what this was doing
+                    # decay=0.9, # TODO: https://stackoverflow.com/questions/40879967/how-to-use-batch-normalization-correctly-in-tensorflow
+                    center=True,
+                    scale=True,
+                    zero_debias_moving_mean=True),
+            false_fn=lambda : tf.compat.v1.layers.batch_normalization(
+                    inputs=x, training=training, reuse=True,
+                    # scope=scope,
+                    # updates_collections=None,
+                    # decay=0.9,
+                    center=True,
+                    scale=True,
+                    zero_debias_moving_mean=True))
 
 def Relu(x):
     return tf.nn.relu(x)
@@ -68,7 +68,7 @@ def Concatenation(layers) :
     return tf.concat(layers, axis=3)
 
 def Linear(x) :
-    return tf.layers.dense(inputs=x, use_bias=False, units=class_num, name='linear')
+    return tf.compat.v1.layers.dense(inputs=x, use_bias=False, units=class_num, name='linear')
 
 def Evaluate(sess):
     test_acc = 0.0
@@ -96,18 +96,18 @@ def Evaluate(sess):
     test_loss /= test_iteration # average loss
     test_acc /= test_iteration # average accuracy
 
-    summary = tf.Summary(value=[tf.Summary.Value(tag='test_loss', simple_value=test_loss),
-                                tf.Summary.Value(tag='test_accuracy', simple_value=test_acc)])
+    summary = tf.compat.v1.Summary(value=[tf.compat.v1.Summary.Value(tag='test_loss', simple_value=test_loss),
+                                tf.compat.v1.Summary.Value(tag='test_accuracy', simple_value=test_acc)])
 
     return test_acc, test_loss, summary
 
 class ResNeXt():
     def __init__(self, x, training):
-        self.training = training
+        self.training = training # Bool Tensor
         self.model = self.Build_ResNext(x)
 
     def first_layer(self, x, scope):
-        with tf.name_scope(scope) :
+        with tf.compat.v1.name_scope(scope) :
             x = conv_layer(x, filter=64, kernel=[3, 3], stride=1, layer_name=scope+'_conv1')
             x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             x = Relu(x)
@@ -115,7 +115,7 @@ class ResNeXt():
             return x
 
     def conv_batch(self, x, filter_num, stride_num, scope):
-        with tf.name_scope(scope):
+        with tf.compat.v1.name_scope(scope):
             x = conv_layer(x, filter=filter_num, kernel=[1,1], stride=stride_num, layer_name=scope+'_conv1')
             x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             # x = Relu(x)
@@ -123,7 +123,7 @@ class ResNeXt():
             return x
 
     def transform_layer(self, x, stride, scope):
-        with tf.name_scope(scope) :
+        with tf.compat.v1.name_scope(scope) :
             x = conv_layer(x, filter=depth, kernel=[1,1], stride=stride, layer_name=scope+'_conv1')
             x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             x = Relu(x)
@@ -134,7 +134,7 @@ class ResNeXt():
             return x
 
     def transition_layer(self, x, out_dim, stride, scope):
-        with tf.name_scope(scope):
+        with tf.compat.v1.name_scope(scope):
             x = conv_layer(x, filter=out_dim, kernel=[1,1], stride=1, layer_name=scope+'_conv1')
             x = BatchNormalizationalization(x, training=self.training, scope=scope+'_batch1')
             # x = Relu(x)
@@ -142,7 +142,7 @@ class ResNeXt():
             return x
 
     def split_layer(self, input_x, stride, layer_name):
-        with tf.name_scope(layer_name) :
+        with tf.compat.v1.name_scope(layer_name) :
             layers_split = list()
             for i in range(cardinality) :
                 splits = self.transform_layer(input_x, stride=stride, scope=layer_name + '_splitN_' + str(i))
@@ -151,7 +151,7 @@ class ResNeXt():
             return Concatenation(layers_split)
 
     def dense_layer(self, unit_num, class_num, scope):
-        with tf.name_scope(scope):
+        with tf.compat.v1.name_scope(scope):
             x = Dense(x, units=class_num, layer_name=scope+'_dense1')
         return x
 
@@ -174,7 +174,7 @@ class ResNeXt():
 
             if flag is True :
                 pad_input_x = Average_pooling(input_x)
-                pad_input_x = tf.pad(pad_input_x, [[0, 0], [0, 0], [0, 0], [channel, channel]]) # [?, height, width, channel]
+                pad_input_x = tf.pad(tensor=pad_input_x, paddings=[[0, 0], [0, 0], [0, 0], [channel, channel]]) # [?, height, width, channel]
             else :
                 pad_input_x = input_x
 
@@ -256,34 +256,34 @@ if __name__ == "__main__":
     print("Preprocessing finished!")
 
     # IMAGE_SIZE = 32, IMAGE_CHANNELS = 3, CLASS_NUM = 10 in cifar10 (CHECK PREPROCESSING FOR TRUE IMAGE SIZES)
-    x = tf.placeholder(tf.float32, shape=[None, IMAGE_SIZE[0], IMAGE_SIZE[1], IMAGE_CHANNELS])
-    label = tf.placeholder(tf.float32, shape=[None, CLASS_NUM])
+    x = tf.compat.v1.placeholder(tf.float32, shape=[None, IMAGE_SIZE[0], IMAGE_SIZE[1], IMAGE_CHANNELS])
+    label = tf.compat.v1.placeholder(tf.float32, shape=[None, CLASS_NUM])
 
-    training_flag = tf.placeholder(tf.bool)
+    training_flag = tf.compat.v1.placeholder(tf.bool)
 
 
-    learning_rate = tf.placeholder(tf.float32, name='learning_rate')
+    learning_rate = tf.compat.v1.placeholder(tf.float32, name='learning_rate')
 
     logits = ResNeXt(x, training=training_flag).model
-    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=label, logits=logits))
+    cost = tf.reduce_mean(input_tensor=tf.nn.softmax_cross_entropy_with_logits(labels=tf.stop_gradient(label), logits=logits))
 
-    l2_loss = tf.add_n([tf.nn.l2_loss(var) for var in tf.trainable_variables()])
-    optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=momentum, use_nesterov=True)
+    l2_loss = tf.add_n([tf.nn.l2_loss(var) for var in tf.compat.v1.trainable_variables()])
+    optimizer = tf.compat.v1.train.MomentumOptimizer(learning_rate=learning_rate, momentum=momentum, use_nesterov=True)
     train = optimizer.minimize(cost + l2_loss * weight_decay)
 
-    correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(label, 1))
-    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+    correct_prediction = tf.equal(tf.argmax(input=logits, axis=1), tf.argmax(input=label, axis=1))
+    accuracy = tf.reduce_mean(input_tensor=tf.cast(correct_prediction, tf.float32))
 
-    saver = tf.train.Saver(tf.global_variables())
+    saver = tf.compat.v1.train.Saver(tf.compat.v1.global_variables())
 
-    with tf.Session() as sess:
+    with tf.compat.v1.Session() as sess:
         ckpt = tf.train.get_checkpoint_state('./model')
-        if ckpt and tf.train.checkpoint_exists(ckpt.model_checkpoint_path):
+        if ckpt and tf.compat.v1.train.checkpoint_exists(ckpt.model_checkpoint_path):
             saver.restore(sess, ckpt.model_checkpoint_path)
         else:
-            sess.run(tf.global_variables_initializer())
+            sess.run(tf.compat.v1.global_variables_initializer())
 
-        summary_writer = tf.summary.FileWriter('./logs', sess.graph)
+        summary_writer = tf.compat.v1.summary.FileWriter('./logs', sess.graph)
 
         epoch_learning_rate = init_learning_rate
         for epoch in range(1, total_epochs + 1):
@@ -322,8 +322,8 @@ if __name__ == "__main__":
             train_loss /= iteration # average loss
             train_acc /= iteration # average accuracy
 
-            train_summary = tf.Summary(value=[tf.Summary.Value(tag='train_loss', simple_value=train_loss),
-                                            tf.Summary.Value(tag='train_accuracy', simple_value=train_acc)])
+            train_summary = tf.compat.v1.Summary(value=[tf.compat.v1.Summary.Value(tag='train_loss', simple_value=train_loss),
+                                            tf.compat.v1.Summary.Value(tag='train_accuracy', simple_value=train_acc)])
 
             test_acc, test_loss, test_summary = Evaluate(sess)
 

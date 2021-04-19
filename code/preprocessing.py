@@ -68,6 +68,12 @@ def read_videos(directories, label_dict):
                 fs, ls = label_dict[vid_name]
                 labels[i] = LABELS.index(get_label_from_frame(fs, ls, frame_n))
                 i += 1
+    
+    # Shuffle data
+    shuffle_idx = np.random.permutation(data.shape[0])
+    data = data[shuffle_idx]
+    labels = labels[shuffle_idx]
+    print(data.shape, labels.shape)
 
     return data, labels
 

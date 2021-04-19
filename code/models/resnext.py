@@ -1,5 +1,5 @@
 import tensorflow as tf
-from resnext_block import build_ResNeXt_block
+from models import resnext_block
 
 NUM_CLASSES = 14
 
@@ -17,19 +17,19 @@ class ResNeXt(tf.keras.Model):
         self.pool1 = tf.keras.layers.MaxPool2D(pool_size=(3, 3),
                                                strides=2,
                                                padding="same")
-        self.block1 = build_ResNeXt_block(filters=128,
+        self.block1 = resnext_block.build_ResNeXt_block(filters=128,
                                           strides=1,
                                           groups=cardinality,
                                           repeat_num=repeat_num_list[0])
-        self.block2 = build_ResNeXt_block(filters=256,
+        self.block2 = resnext_block.build_ResNeXt_block(filters=256,
                                           strides=2,
                                           groups=cardinality,
                                           repeat_num=repeat_num_list[1])
-        self.block3 = build_ResNeXt_block(filters=512,
+        self.block3 = resnext_block.build_ResNeXt_block(filters=512,
                                           strides=2,
                                           groups=cardinality,
                                           repeat_num=repeat_num_list[2])
-        self.block4 = build_ResNeXt_block(filters=1024,
+        self.block4 = resnext_block.build_ResNeXt_block(filters=1024,
                                           strides=2,
                                           groups=cardinality,
                                           repeat_num=repeat_num_list[3])

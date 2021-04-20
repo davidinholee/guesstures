@@ -15,8 +15,8 @@ from preprocessing import *
 #IMAGE_WIDTH = 320
 #CHANNELS = 3
 
-def generate_datasets():
-    x, y = prepare_data()
+def generate_datasets(count):
+    x, y, count = prepare_data(count)
     tot_size = x.shape[0]
     train_x = x[:int(0.8*tot_size)]
     train_y = y[:int(0.8*tot_size)]
@@ -29,7 +29,7 @@ def generate_datasets():
     valid_count = val_x.shape[0]
     test_count = test_y.shape[0]
 
-    return train_x, train_y, val_x, val_y, test_x, test_y, train_count, valid_count, test_count
+    return train_x, train_y, val_x, val_y, test_x, test_y, train_count, valid_count, test_count, count
 
 def get_model():
         return resnext.ResNeXt101()
@@ -46,11 +46,6 @@ if __name__ == '__main__':
     if gpus:
         for gpu in gpus:
             tf.config.experimental.set_memory_growth(gpu, True)
-
-    # get the dataset
-    print("Beginning preprocessing...")
-    train_x, train_y, val_x, val_y, test_x, test_y, train_count, valid_count, test_count = generate_datasets()
-    print("Finished preprocessing!")
 
     # create model
     model = get_model()
@@ -87,35 +82,41 @@ if __name__ == '__main__':
 
     # start training
     for epoch in range(EPOCHS):
-        step = 0
-        for i in range(0, train_x.shape[0], BATCH_SIZE):
-            step += 1
-            images = train_x[i:i+BATCH_SIZE]
-            labels = train_y[i:i+BATCH_SIZE]
-            train_step(images, labels)
-            print("Epoch: {}/{}, step: {}/{}, loss: {:.5f}, accuracy: {:.5f}".format(epoch,
-                                                                                     EPOCHS,
-                                                                                     step,
-                                                                                     math.ceil(train_count / BATCH_SIZE),
-                                                                                     train_loss.result().numpy(),
-                                                                                     train_accuracy.result().numpy()))
+        # get the dataset
+        count = 0
+        while (count != -1):
+            train_x, train_y, val_x, val_y, test_x, test_y, train_count, valid_count, test_count, count = generate_datasets(count)
 
-        for i in range(0, val_x.shape[0], BATCH_SIZE):
-            valid_images = val_x[i:i+BATCH_SIZE]
-            valid_labels = val_y[i:i+BATCH_SIZE]
-            valid_step(valid_images, valid_labels)
+            step = 0
+            for i in range(0, train_x.shape[0], BATCH_SIZE):
+                step += 1
+                images = train_x[i:i+BATCH_SIZE]
+                labels = train_y[i:i+BATCH_SIZE]
+                train_step(images, labels)
+                print("Epoch: {}/{}, step: {}/{}, loss: {:.5f}, accuracy: {:.5f}".format(epoch,
+                                                                                        EPOCHS,
+                                                                                        step,
+                                                                                        math.ceil(train_count / BATCH_SIZE),
+                                                                                        train_loss.result().numpy(),
+                                                                                        train_accuracy.result().numpy()))
 
-        print("Epoch: {}/{}, train loss: {:.5f}, train accuracy: {:.5f}, "
-              "valid loss: {:.5f}, valid accuracy: {:.5f}".format(epoch,
-                                                                  EPOCHS,
-                                                                  train_loss.result().numpy(),
-                                                                  train_accuracy.result().numpy(),
-                                                                  valid_loss.result().numpy(),
-                                                                  valid_accuracy.result().numpy()))
-        train_loss.reset_states()
-        train_accuracy.reset_states()
-        valid_loss.reset_states()
-        valid_accuracy.reset_states()
+            for i in range(0, val_x.shape[0], BATCH_SIZE):
+                valid_images = val_x[i:i+BATCH_SIZE]
+                valid_labels = val_y[i:i+BATCH_SIZE]
+                valid_step(valid_images, valid_labels)
+
+            print("Epoch: {}/{}, train loss: {:.5f}, train accuracy: {:.5f}, "
+                "valid loss: {:.5f}, valid accuracy: {:.5f}".format(epoch,
+                                                                    EPOCHS,
+                                                                    train_loss.result().numpy(),
+                                                                    train_accuracy.result().numpy(),
+                                                                    valid_loss.result().numpy(),
+                                                                    valid_accuracy.result().numpy()))
+            train_loss.reset_states()
+            train_accuracy.reset_states()
+            valid_loss.reset_states()
+            valid_accuracy.reset_states()
+            train_x, train_y, val_x, val_y, test_x, test_y = None, None, None, None, None, None
 
         if epoch % save_every_n_epoch == 0:
             model.save_weights(filepath=save_model_dir+"epoch-{}".format(epoch), save_format='tf')

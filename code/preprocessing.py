@@ -6,6 +6,7 @@ LABELS = ["D0X", "B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", 
 IMAGE_SIZE = (240, 320)
 IMAGE_CHANNELS = 3
 CLASS_NUM = 14
+VIDEO_BATCH = 2
 
 def parse_annotations(filepath):
     '''
@@ -41,7 +42,7 @@ def get_label_from_frame(frames, labels, frame):
     return labels[-1]
 
 
-def read_videos(directories, label_dict):
+def read_videos(directories, label_dict, count):
     '''
     Takes in a list of directories and generates two shuffled arrays,
     the input data of size (n, 640, 480, 3), and the labels of size (n)
@@ -73,17 +74,20 @@ def read_videos(directories, label_dict):
     shuffle_idx = np.random.permutation(data.shape[0])
     data = data[shuffle_idx]
     labels = labels[shuffle_idx]
-    print(data.shape, labels.shape)
 
-    return data, labels
+    return data, labels, count
 
-def prepare_data():
+def prepare_data(batch_n):
     '''
     Preprocesses the data we want for training.
     '''
 
     annos = parse_annotations("data/annotations.txt")
-    return read_videos(["data/1CM1_1_R_#217"], annos)
+    dirs = [x[0].replace("\\", "/") for x in os.walk("data")]
+    if len(dirs) - 1 > batch_n * VIDEO_BATCH:
+        return read_videos(dirs[batch_n*VIDEO_BATCH+1:(batch_n+1)*VIDEO_BATCH+1], annos, batch_n+1)
+    else:
+        return read_videos(dirs[batch_n*VIDEO_BATCH+1:], annos, batch_n+1)
 
 if __name__ == "__main__":
     annos = parse_annotations("data/annotations.txt")

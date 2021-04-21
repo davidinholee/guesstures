@@ -6,7 +6,7 @@ LABELS = ["D0X", "B0A", "B0B", "G01", "G02", "G03", "G04", "G05", "G06", "G07", 
 IMAGE_SIZE = (240, 320)
 IMAGE_CHANNELS = 3
 CLASS_NUM = 14
-VIDEO_BATCH = 2
+VIDEO_BATCH = 5
 
 def parse_annotations(filepath):
     '''
@@ -58,7 +58,7 @@ def read_videos(directories, label_dict, count):
     labels = np.zeros((tot_size))
     i = 0
     for d in directories:
-        for n in os.listdir(d):
+        for n in np.random.shuffle(os.listdir(d)):
             if "jpg" in n:
                 img = Image.open(d+"/"+n)
                 # Image data
@@ -69,11 +69,6 @@ def read_videos(directories, label_dict, count):
                 fs, ls = label_dict[vid_name]
                 labels[i] = LABELS.index(get_label_from_frame(fs, ls, frame_n))
                 i += 1
-    
-    # Shuffle data
-    shuffle_idx = np.random.permutation(data.shape[0])
-    data = data[shuffle_idx]
-    labels = labels[shuffle_idx]
 
     return data, labels, count
 

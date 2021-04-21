@@ -2,14 +2,14 @@ DEVICE = "gpu"   # cpu or gpu
 
 # some training parameters
 EPOCHS = 50 #50
-BATCH_SIZE = 8
+BATCH_SIZE = 16
 NUM_CLASSES = 14
 IMAGE_HEIGHT = 240
 IMAGE_WIDTH = 320
 CHANNELS = 3
 
 save_model_dir = "saved_model/"
-save_every_n_epoch = 10
+save_every_n_epoch = 1
 test_image_dir = ""
 
 dataset_dir = "dataset/"

@@ -51,7 +51,7 @@ def read_videos(directories, label_dict, count):
     # Get sizes of directories
     tot_size = 0
     for d in directories:
-        tot_size += (len(os.listdir(d)) - 1)
+        tot_size += (len(os.listdir(d)))
 
     # Read in each frame one by one
     data = np.zeros((tot_size, 240, 320, 3))

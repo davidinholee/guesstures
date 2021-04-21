@@ -118,8 +118,8 @@ if __name__ == '__main__':
             valid_accuracy.reset_states()
             train_x, train_y, val_x, val_y, test_x, test_y = None, None, None, None, None, None
 
-        if epoch % save_every_n_epoch == 0:
-            model.save_weights(filepath=save_model_dir+"epoch-{}".format(epoch), save_format='tf')
+            if epoch % save_every_n_epoch == 0:
+                model.save_weights(filepath=save_model_dir+"epoch-{}".format(epoch), save_format='tf')
 
 
     # save weights

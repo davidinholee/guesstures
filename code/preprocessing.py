@@ -88,7 +88,7 @@ def prepare_data(batch_n):
     if len(dirs) - 1 > batch_n * VIDEO_BATCH:
         return read_videos(dirs[batch_n*VIDEO_BATCH+1:(batch_n+1)*VIDEO_BATCH+1], annos, batch_n+1)
     else:
-        return read_videos(dirs[batch_n*VIDEO_BATCH+1:], annos, batch_n+1)
+        return read_videos(dirs[batch_n*VIDEO_BATCH+1:], annos, -1)
 
 if __name__ == "__main__":
     annos = parse_annotations("data/annotations.txt")

@@ -54,14 +54,15 @@ def read_videos(directories, label_dict, count):
         tot_size += (len(os.listdir(d)))
 
     # Read in each frame one by one
-    data = np.zeros((tot_size, 240, 320, 3))
-    labels = np.zeros((tot_size))
+    data = np.zeros((int(tot_size/2), 240, 320, 3))
+    labels = np.zeros((int(tot_size/2)))
     i = 0
     for d in directories:
         dirs = os.listdir(d)
         np.random.shuffle(os.listdir(d))
+        other = False
         for n in dirs:
-            if "jpg" in n:
+            if "jpg" in n and other:
                 img = Image.open(d+"/"+n)
                 # Image data
                 data[i] = np.asarray(img)
@@ -71,6 +72,9 @@ def read_videos(directories, label_dict, count):
                 fs, ls = label_dict[vid_name]
                 labels[i] = LABELS.index(get_label_from_frame(fs, ls, frame_n))
                 i += 1
+                other = False
+            elif not other:
+                other = True
 
     return data, labels, count
 

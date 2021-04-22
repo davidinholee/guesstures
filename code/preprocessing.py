@@ -59,7 +59,7 @@ def read_videos(directories, label_dict, count):
     i = 0
     for d in directories:
         dirs = os.listdir(d)
-        np.random.shuffle(os.listdir(d))
+        np.random.shuffle(dirs)
         other = False
         for n in dirs:
             if "jpg" in n and other:

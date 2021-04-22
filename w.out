@@ -1,0 +1,51 @@
+Model: "res_ne_xt"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              multiple                  9472      
+_________________________________________________________________
+batch_normalization (BatchNo multiple                  256       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) multiple                  0         
+_________________________________________________________________
+sequential (Sequential)      (None, 60, 80, 256)       344832    
+_________________________________________________________________
+sequential_1 (Sequential)    (None, 30, 40, 512)       2004992   
+_________________________________________________________________
+sequential_2 (Sequential)    (None, 15, 20, 1024)      49497088  
+_________________________________________________________________
+sequential_3 (Sequential)    (None, 8, 10, 2048)       22996992  
+_________________________________________________________________
+global_average_pooling2d (Gl multiple                  0         
+_________________________________________________________________
+dense (Dense)                multiple                  28686     
+=================================================================
+Total params: 74,882,318
+Trainable params: 74,687,118
+Non-trainable params: 195,200
+_________________________________________________________________
+Epoch: 0/50, step: 1/95, loss: 3.03478, accuracy: 0.00000
+Epoch: 0/50, step: 2/95, loss: 4.93605, accuracy: 0.25000
+Epoch: 0/50, step: 3/95, loss: 5.04844, accuracy: 0.27083
+Epoch: 0/50, step: 4/95, loss: 4.20055, accuracy: 0.34375
+Epoch: 0/50, step: 5/95, loss: 3.75350, accuracy: 0.32500
+Epoch: 0/50, step: 6/95, loss: 3.38691, accuracy: 0.33333
+Epoch: 0/50, step: 7/95, loss: 3.17698, accuracy: 0.34821
+Epoch: 0/50, step: 8/95, loss: 3.13274, accuracy: 0.33594
+Epoch: 0/50, step: 9/95, loss: 2.96266, accuracy: 0.35417
+Epoch: 0/50, step: 10/95, loss: 2.80522, accuracy: 0.34375
+Epoch: 0/50, step: 11/95, loss: 2.72280, accuracy: 0.36364
+Epoch: 0/50, step: 12/95, loss: 2.61786, accuracy: 0.36979
+Epoch: 0/50, step: 13/95, loss: 2.53033, accuracy: 0.36058
+Epoch: 0/50, step: 14/95, loss: 2.45677, accuracy: 0.36607
+Epoch: 0/50, step: 15/95, loss: 2.40954, accuracy: 0.35000
+Epoch: 0/50, step: 16/95, loss: 2.35555, accuracy: 0.36328
+Epoch: 0/50, step: 17/95, loss: 2.28889, accuracy: 0.38235
+Epoch: 0/50, step: 18/95, loss: 2.23080, accuracy: 0.39583
+Epoch: 0/50, step: 19/95, loss: 2.19650, accuracy: 0.39474
+Epoch: 0/50, step: 20/95, loss: 2.18927, accuracy: 0.40000
+Epoch: 0/50, step: 21/95, loss: 2.17682, accuracy: 0.39881
+Epoch: 0/50, step: 22/95, loss: 2.14145, accuracy: 0.39773
+Epoch: 0/50, step: 23/95, loss: 2.11676, accuracy: 0.39402
+Epoch: 0/50, step: 24/95, loss: 2.09536, accuracy: 0.40104
+Epoch: 0/50, step: 25/95, loss: 2.06196, accuracy: 0.40000

@@ -1,0 +1,734 @@
+2021-04-22 01:50:28.173905: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-22 01:50:30.322154: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-04-22 01:50:30.323196: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-04-22 01:50:32.331995: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.332802: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:00:04.0 name: Tesla K80 computeCapability: 3.7
+coreClock: 0.8235GHz coreCount: 13 deviceMemorySize: 11.17GiB deviceMemoryBandwidth: 223.96GiB/s
+2021-04-22 01:50:32.332878: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-22 01:50:32.336705: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-22 01:50:32.336768: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-04-22 01:50:32.338109: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-04-22 01:50:32.338442: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-04-22 01:50:32.341694: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-04-22 01:50:32.342528: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-04-22 01:50:32.342710: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-04-22 01:50:32.342807: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.343717: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.344482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-04-22 01:50:32.358441: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-04-22 01:50:32.358876: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-04-22 01:50:32.359083: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.359787: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:00:04.0 name: Tesla K80 computeCapability: 3.7
+coreClock: 0.8235GHz coreCount: 13 deviceMemorySize: 11.17GiB deviceMemoryBandwidth: 223.96GiB/s
+2021-04-22 01:50:32.359813: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-22 01:50:32.359841: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-22 01:50:32.359862: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-04-22 01:50:32.359896: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-04-22 01:50:32.359962: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-04-22 01:50:32.359983: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-04-22 01:50:32.360002: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-04-22 01:50:32.360091: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-04-22 01:50:32.360281: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.361234: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.362001: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-04-22 01:50:32.362063: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-04-22 01:50:32.846574: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-04-22 01:50:32.846625: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2021-04-22 01:50:32.846637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2021-04-22 01:50:32.846899: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.847725: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.848528: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-04-22 01:50:32.849308: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10636 MB memory) -> physical GPU (device: 0, name: Tesla K80, pci bus id: 0000:00:04.0, compute capability: 3.7)
+2021-04-22 01:50:55.892544: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-04-22 01:50:57.020236: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-04-22 01:50:57.249817: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+Model: "res_ne_xt"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              multiple                  9472      
+_________________________________________________________________
+batch_normalization (BatchNo multiple                  256       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) multiple                  0         
+_________________________________________________________________
+sequential (Sequential)      (None, 60, 80, 256)       344832    
+_________________________________________________________________
+sequential_1 (Sequential)    (None, 30, 40, 512)       2004992   
+_________________________________________________________________
+sequential_2 (Sequential)    (None, 15, 20, 1024)      49497088  
+_________________________________________________________________
+sequential_3 (Sequential)    (None, 8, 10, 2048)       22996992  
+_________________________________________________________________
+global_average_pooling2d (Gl multiple                  0         
+_________________________________________________________________
+dense (Dense)                multiple                  28686     
+=================================================================
+Total params: 74,882,318
+Trainable params: 74,687,118
+Non-trainable params: 195,200
+_________________________________________________________________
+Epoch: 0/50, step: 1/95, loss: 3.05633, accuracy: 0.00000
+Epoch: 0/50, step: 2/95, loss: 5.08464, accuracy: 0.15625
+Epoch: 0/50, step: 3/95, loss: 4.05545, accuracy: 0.16667
+Epoch: 0/50, step: 4/95, loss: 3.98626, accuracy: 0.26562
+Epoch: 0/50, step: 5/95, loss: 3.47852, accuracy: 0.32500
+Epoch: 0/50, step: 6/95, loss: 3.16793, accuracy: 0.35417
+Epoch: 0/50, step: 7/95, loss: 2.85056, accuracy: 0.38393
+Epoch: 0/50, step: 8/95, loss: 2.74865, accuracy: 0.41406
+Epoch: 0/50, step: 9/95, loss: 2.69501, accuracy: 0.44444
+Epoch: 0/50, step: 10/95, loss: 2.53490, accuracy: 0.44375
+Epoch: 0/50, step: 11/95, loss: 2.41976, accuracy: 0.44318
+Epoch: 0/50, step: 12/95, loss: 2.30383, accuracy: 0.44271
+Epoch: 0/50, step: 13/95, loss: 2.20224, accuracy: 0.48077
+Epoch: 0/50, step: 14/95, loss: 2.27363, accuracy: 0.46875
+Epoch: 0/50, step: 15/95, loss: 2.24063, accuracy: 0.45833
+Epoch: 0/50, step: 16/95, loss: 2.18169, accuracy: 0.46094
+Epoch: 0/50, step: 17/95, loss: 2.12357, accuracy: 0.47059
+Epoch: 0/50, step: 18/95, loss: 2.10064, accuracy: 0.47569
+Epoch: 0/50, step: 19/95, loss: 2.07318, accuracy: 0.48026
+Epoch: 0/50, step: 20/95, loss: 2.05741, accuracy: 0.47813
+Epoch: 0/50, step: 21/95, loss: 2.03498, accuracy: 0.47024
+Epoch: 0/50, step: 22/95, loss: 1.99541, accuracy: 0.47443
+Epoch: 0/50, step: 23/95, loss: 1.97519, accuracy: 0.46467
+Epoch: 0/50, step: 24/95, loss: 1.96435, accuracy: 0.46875
+Epoch: 0/50, step: 25/95, loss: 1.93575, accuracy: 0.47250
+Epoch: 0/50, step: 26/95, loss: 1.92753, accuracy: 0.47115
+Epoch: 0/50, step: 27/95, loss: 1.90868, accuracy: 0.47454
+Epoch: 0/50, step: 28/95, loss: 1.88660, accuracy: 0.47098
+Epoch: 0/50, step: 29/95, loss: 1.88349, accuracy: 0.46552
+Epoch: 0/50, step: 30/95, loss: 1.86283, accuracy: 0.46667
+Epoch: 0/50, step: 31/95, loss: 1.87135, accuracy: 0.46169
+Epoch: 0/50, step: 32/95, loss: 1.90438, accuracy: 0.45508
+Epoch: 0/50, step: 33/95, loss: 1.89101, accuracy: 0.45076
+Epoch: 0/50, step: 34/95, loss: 1.87436, accuracy: 0.45037
+Epoch: 0/50, step: 35/95, loss: 1.87630, accuracy: 0.45000
+Epoch: 0/50, step: 36/95, loss: 1.85941, accuracy: 0.45139
+Epoch: 0/50, step: 37/95, loss: 1.87555, accuracy: 0.45101
+Epoch: 0/50, step: 38/95, loss: 1.85905, accuracy: 0.44737
+Epoch: 0/50, step: 39/95, loss: 1.84411, accuracy: 0.44712
+Epoch: 0/50, step: 40/95, loss: 1.86128, accuracy: 0.45156
+Epoch: 0/50, step: 41/95, loss: 1.85858, accuracy: 0.44512
+Epoch: 0/50, step: 42/95, loss: 1.84560, accuracy: 0.44940
+Epoch: 0/50, step: 43/95, loss: 1.83005, accuracy: 0.45494
+Epoch: 0/50, step: 44/95, loss: 1.82833, accuracy: 0.45170
+Epoch: 0/50, step: 45/95, loss: 1.81971, accuracy: 0.45278
+Epoch: 0/50, step: 46/95, loss: 1.81612, accuracy: 0.44973
+Epoch: 0/50, step: 47/95, loss: 1.80313, accuracy: 0.45479
+Epoch: 0/50, step: 48/95, loss: 1.80644, accuracy: 0.45182
+Epoch: 0/50, step: 49/95, loss: 1.80663, accuracy: 0.45153
+Epoch: 0/50, step: 50/95, loss: 1.80282, accuracy: 0.45500
+Epoch: 0/50, step: 51/95, loss: 1.80394, accuracy: 0.45343
+Epoch: 0/50, step: 52/95, loss: 1.79452, accuracy: 0.45312
+Epoch: 0/50, step: 53/95, loss: 1.78440, accuracy: 0.45283
+Epoch: 0/50, step: 54/95, loss: 1.77628, accuracy: 0.45602
+Epoch: 0/50, step: 55/95, loss: 1.77206, accuracy: 0.45909
+Epoch: 0/50, step: 56/95, loss: 1.77341, accuracy: 0.45871
+Epoch: 0/50, step: 57/95, loss: 1.76093, accuracy: 0.45943
+Epoch: 0/50, step: 58/95, loss: 1.75224, accuracy: 0.45582
+Epoch: 0/50, step: 59/95, loss: 1.75236, accuracy: 0.45233
+Epoch: 0/50, step: 60/95, loss: 1.74531, accuracy: 0.45417
+Epoch: 0/50, step: 61/95, loss: 1.73222, accuracy: 0.45697
+Epoch: 0/50, step: 62/95, loss: 1.72764, accuracy: 0.45565
+Epoch: 0/50, step: 63/95, loss: 1.73481, accuracy: 0.45238
+Epoch: 0/50, step: 64/95, loss: 1.72810, accuracy: 0.45312
+Epoch: 0/50, step: 65/95, loss: 1.71755, accuracy: 0.45288
+Epoch: 0/50, step: 66/95, loss: 1.71207, accuracy: 0.45549
+Epoch: 0/50, step: 67/95, loss: 1.70295, accuracy: 0.45616
+Epoch: 0/50, step: 68/95, loss: 1.69913, accuracy: 0.45680
+Epoch: 0/50, step: 69/95, loss: 1.69240, accuracy: 0.45833
+Epoch: 0/50, step: 70/95, loss: 1.70223, accuracy: 0.45714
+Epoch: 0/50, step: 71/95, loss: 1.70155, accuracy: 0.45599
+Epoch: 0/50, step: 72/95, loss: 1.69704, accuracy: 0.45747
+Epoch: 0/50, step: 73/95, loss: 1.69697, accuracy: 0.45548
+Epoch: 0/50, step: 74/95, loss: 1.69788, accuracy: 0.45355
+Epoch: 0/50, step: 75/95, loss: 1.69830, accuracy: 0.45167
+Epoch: 0/50, step: 76/95, loss: 1.68789, accuracy: 0.45477
+Epoch: 0/50, step: 77/95, loss: 1.68491, accuracy: 0.45617
+Epoch: 0/50, step: 78/95, loss: 1.68685, accuracy: 0.45513
+Epoch: 0/50, step: 79/95, loss: 1.68699, accuracy: 0.45332
+Epoch: 0/50, step: 80/95, loss: 1.69154, accuracy: 0.45234
+Epoch: 0/50, step: 81/95, loss: 1.68911, accuracy: 0.45216
+Epoch: 0/50, step: 82/95, loss: 1.69451, accuracy: 0.45046
+Epoch: 0/50, step: 83/95, loss: 1.70035, accuracy: 0.44804
+Epoch: 0/50, step: 84/95, loss: 1.70317, accuracy: 0.44717
+Epoch: 0/50, step: 85/95, loss: 1.69783, accuracy: 0.44706
+Epoch: 0/50, step: 86/95, loss: 1.69003, accuracy: 0.44913
+Epoch: 0/50, step: 87/95, loss: 1.68707, accuracy: 0.44971
+Epoch: 0/50, step: 88/95, loss: 1.68091, accuracy: 0.45028
+Epoch: 0/50, step: 89/95, loss: 1.68210, accuracy: 0.45154
+Epoch: 0/50, step: 90/95, loss: 1.67525, accuracy: 0.45208
+Epoch: 0/50, step: 91/95, loss: 1.67194, accuracy: 0.45261
+Epoch: 0/50, step: 92/95, loss: 1.66237, accuracy: 0.45448
+Epoch: 0/50, step: 93/95, loss: 1.65529, accuracy: 0.45565
+Epoch: 0/50, step: 94/95, loss: 1.65128, accuracy: 0.45612
+Epoch: 0/50, step: 95/95, loss: 1.64909, accuracy: 0.45646
+Epoch: 0/50, train loss: 1.64909, train accuracy: 0.45646, valid loss: 30.16720, valid accuracy: 0.46842
+Epoch: 0/50, step: 1/94, loss: 3.73868, accuracy: 0.31250
+Epoch: 0/50, step: 2/94, loss: 2.86892, accuracy: 0.37500
+Epoch: 0/50, step: 3/94, loss: 2.82783, accuracy: 0.33333
+Epoch: 0/50, step: 4/94, loss: 2.83629, accuracy: 0.31250
+Epoch: 0/50, step: 5/94, loss: 2.70653, accuracy: 0.32500
+Epoch: 0/50, step: 6/94, loss: 2.91348, accuracy: 0.32292
+Epoch: 0/50, step: 7/94, loss: 2.76974, accuracy: 0.30357
+Epoch: 0/50, step: 8/94, loss: 2.77002, accuracy: 0.27344
+Epoch: 0/50, step: 9/94, loss: 2.78569, accuracy: 0.27778
+Epoch: 0/50, step: 10/94, loss: 2.68866, accuracy: 0.28125
+Epoch: 0/50, step: 11/94, loss: 2.71040, accuracy: 0.27273
+Epoch: 0/50, step: 12/94, loss: 2.66605, accuracy: 0.27604
+Epoch: 0/50, step: 13/94, loss: 2.64313, accuracy: 0.27885
+Epoch: 0/50, step: 14/94, loss: 2.58191, accuracy: 0.29018
+Epoch: 0/50, step: 15/94, loss: 2.54694, accuracy: 0.28750
+Epoch: 0/50, step: 16/94, loss: 2.58931, accuracy: 0.28516
+Epoch: 0/50, step: 17/94, loss: 2.52906, accuracy: 0.28309
+Epoch: 0/50, step: 18/94, loss: 2.45169, accuracy: 0.29167
+Epoch: 0/50, step: 19/94, loss: 2.37539, accuracy: 0.30921
+Epoch: 0/50, step: 20/94, loss: 2.34771, accuracy: 0.30937
+Epoch: 0/50, step: 21/94, loss: 2.30886, accuracy: 0.31250
+Epoch: 0/50, step: 22/94, loss: 2.28188, accuracy: 0.31534
+Epoch: 0/50, step: 23/94, loss: 2.25617, accuracy: 0.30978
+Epoch: 0/50, step: 24/94, loss: 2.23275, accuracy: 0.31250
+Epoch: 0/50, step: 25/94, loss: 2.22202, accuracy: 0.31500
+Epoch: 0/50, step: 26/94, loss: 2.20160, accuracy: 0.31490
+Epoch: 0/50, step: 27/94, loss: 2.19939, accuracy: 0.31481
+Epoch: 0/50, step: 28/94, loss: 2.20138, accuracy: 0.31027
+Epoch: 0/50, step: 29/94, loss: 2.20542, accuracy: 0.31681
+Epoch: 0/50, step: 30/94, loss: 2.18889, accuracy: 0.31875
+Epoch: 0/50, step: 31/94, loss: 2.18322, accuracy: 0.32460
+Epoch: 0/50, step: 32/94, loss: 2.16221, accuracy: 0.32812
+Epoch: 0/50, step: 33/94, loss: 2.15978, accuracy: 0.33144
+Epoch: 0/50, step: 34/94, loss: 2.14109, accuracy: 0.33640
+Epoch: 0/50, step: 35/94, loss: 2.13743, accuracy: 0.34107
+Epoch: 0/50, step: 36/94, loss: 2.12099, accuracy: 0.34201
+Epoch: 0/50, step: 37/94, loss: 2.09873, accuracy: 0.34628
+Epoch: 0/50, step: 38/94, loss: 2.09355, accuracy: 0.34868
+Epoch: 0/50, step: 39/94, loss: 2.08842, accuracy: 0.34615
+Epoch: 0/50, step: 40/94, loss: 2.07051, accuracy: 0.35313
+Epoch: 0/50, step: 41/94, loss: 2.05869, accuracy: 0.35213
+Epoch: 0/50, step: 42/94, loss: 2.05230, accuracy: 0.35268
+Epoch: 0/50, step: 43/94, loss: 2.04895, accuracy: 0.35029
+Epoch: 0/50, step: 44/94, loss: 2.05439, accuracy: 0.34375
+Epoch: 0/50, step: 45/94, loss: 2.05707, accuracy: 0.33750
+Epoch: 0/50, step: 46/94, loss: 2.06739, accuracy: 0.33424
+Epoch: 0/50, step: 47/94, loss: 2.09019, accuracy: 0.33112
+Epoch: 0/50, step: 48/94, loss: 2.08458, accuracy: 0.33203
+Epoch: 0/50, step: 49/94, loss: 2.09293, accuracy: 0.32781
+Epoch: 0/50, step: 50/94, loss: 2.08118, accuracy: 0.33125
+Epoch: 0/50, step: 51/94, loss: 2.08734, accuracy: 0.32843
+Epoch: 0/50, step: 52/94, loss: 2.07544, accuracy: 0.32933
+Epoch: 0/50, step: 53/94, loss: 2.07030, accuracy: 0.33019
+Epoch: 0/50, step: 54/94, loss: 2.06453, accuracy: 0.33102
+Epoch: 0/50, step: 55/94, loss: 2.06024, accuracy: 0.33182
+Epoch: 0/50, step: 56/94, loss: 2.05043, accuracy: 0.33371
+Epoch: 0/50, step: 57/94, loss: 2.04277, accuracy: 0.33662
+Epoch: 0/50, step: 58/94, loss: 2.04431, accuracy: 0.33405
+Epoch: 0/50, step: 59/94, loss: 2.04185, accuracy: 0.33263
+Epoch: 0/50, step: 60/94, loss: 2.04017, accuracy: 0.33125
+Epoch: 0/50, step: 61/94, loss: 2.03761, accuracy: 0.32787
+Epoch: 0/50, step: 62/94, loss: 2.03710, accuracy: 0.32762
+Epoch: 0/50, step: 63/94, loss: 2.02538, accuracy: 0.33234
+Epoch: 0/50, step: 64/94, loss: 2.01791, accuracy: 0.33398
+Epoch: 0/50, step: 65/94, loss: 2.01160, accuracy: 0.33462
+Epoch: 0/50, step: 66/94, loss: 2.01353, accuracy: 0.33239
+Epoch: 0/50, step: 67/94, loss: 2.01586, accuracy: 0.33116
+Epoch: 0/50, step: 68/94, loss: 2.02043, accuracy: 0.32996
+Epoch: 0/50, step: 69/94, loss: 2.02129, accuracy: 0.32880
+Epoch: 0/50, step: 70/94, loss: 2.02441, accuracy: 0.32679
+Epoch: 0/50, step: 71/94, loss: 2.03099, accuracy: 0.32570
+Epoch: 0/50, step: 72/94, loss: 2.03081, accuracy: 0.32899
+Epoch: 0/50, step: 73/94, loss: 2.02707, accuracy: 0.32705
+Epoch: 0/50, step: 74/94, loss: 2.02791, accuracy: 0.32601
+Epoch: 0/50, step: 75/94, loss: 2.02098, accuracy: 0.33167
+Epoch: 0/50, step: 76/94, loss: 2.01510, accuracy: 0.33306
+Epoch: 0/50, step: 77/94, loss: 2.01273, accuracy: 0.33360
+Epoch: 0/50, step: 78/94, loss: 2.01596, accuracy: 0.33413
+Epoch: 0/50, step: 79/94, loss: 2.01073, accuracy: 0.33544
+Epoch: 0/50, step: 80/94, loss: 2.00723, accuracy: 0.33516
+Epoch: 0/50, step: 81/94, loss: 2.00085, accuracy: 0.33642
+Epoch: 0/50, step: 82/94, loss: 1.99736, accuracy: 0.33765
+Epoch: 0/50, step: 83/94, loss: 1.99033, accuracy: 0.33886
+Epoch: 0/50, step: 84/94, loss: 1.98050, accuracy: 0.33854
+Epoch: 0/50, step: 85/94, loss: 1.98476, accuracy: 0.33824
+Epoch: 0/50, step: 86/94, loss: 1.98381, accuracy: 0.33866
+Epoch: 0/50, step: 87/94, loss: 1.98057, accuracy: 0.34052
+Epoch: 0/50, step: 88/94, loss: 1.97747, accuracy: 0.34091
+Epoch: 0/50, step: 89/94, loss: 1.96956, accuracy: 0.34129
+Epoch: 0/50, step: 90/94, loss: 1.96543, accuracy: 0.34028
+Epoch: 0/50, step: 91/94, loss: 1.95998, accuracy: 0.34135
+Epoch: 0/50, step: 92/94, loss: 1.95954, accuracy: 0.34103
+Epoch: 0/50, step: 93/94, loss: 1.95538, accuracy: 0.34476
+Epoch: 0/50, step: 94/94, loss: 1.95903, accuracy: 0.34492
+Epoch: 0/50, train loss: 1.95903, train accuracy: 0.34492, valid loss: 4323356.00000, valid accuracy: 0.32620
+Epoch: 0/50, step: 1/97, loss: 2.55524, accuracy: 0.12500
+Epoch: 0/50, step: 2/97, loss: 2.55245, accuracy: 0.34375
+Epoch: 0/50, step: 3/97, loss: 2.35244, accuracy: 0.29167
+Epoch: 0/50, step: 4/97, loss: 2.28726, accuracy: 0.32812
+Epoch: 0/50, step: 5/97, loss: 2.40583, accuracy: 0.31250
+Epoch: 0/50, step: 6/97, loss: 2.34853, accuracy: 0.31250
+Epoch: 0/50, step: 7/97, loss: 2.31580, accuracy: 0.30357
+Epoch: 0/50, step: 8/97, loss: 2.26626, accuracy: 0.30469
+Epoch: 0/50, step: 9/97, loss: 2.20726, accuracy: 0.29167
+Epoch: 0/50, step: 10/97, loss: 2.13980, accuracy: 0.28125
+Epoch: 0/50, step: 11/97, loss: 2.10283, accuracy: 0.28409
+Epoch: 0/50, step: 12/97, loss: 2.04251, accuracy: 0.28646
+Epoch: 0/50, step: 13/97, loss: 2.01806, accuracy: 0.29327
+Epoch: 0/50, step: 14/97, loss: 1.98502, accuracy: 0.29464
+Epoch: 0/50, step: 15/97, loss: 1.97648, accuracy: 0.30417
+Epoch: 0/50, step: 16/97, loss: 1.99260, accuracy: 0.30078
+Epoch: 0/50, step: 17/97, loss: 1.97581, accuracy: 0.30515
+Epoch: 0/50, step: 18/97, loss: 1.95672, accuracy: 0.29861
+Epoch: 0/50, step: 19/97, loss: 1.93620, accuracy: 0.30592
+Epoch: 0/50, step: 20/97, loss: 1.93745, accuracy: 0.30000
+Epoch: 0/50, step: 21/97, loss: 1.93607, accuracy: 0.29167
+Epoch: 0/50, step: 22/97, loss: 1.93147, accuracy: 0.29261
+Epoch: 0/50, step: 23/97, loss: 1.94810, accuracy: 0.29076
+Epoch: 0/50, step: 24/97, loss: 1.92177, accuracy: 0.30469
+Epoch: 0/50, step: 25/97, loss: 1.91017, accuracy: 0.30500
+Epoch: 0/50, step: 26/97, loss: 1.88554, accuracy: 0.31010
+Epoch: 0/50, step: 27/97, loss: 1.91409, accuracy: 0.30787
+Epoch: 0/50, step: 28/97, loss: 1.90336, accuracy: 0.31473
+Epoch: 0/50, step: 29/97, loss: 1.89935, accuracy: 0.32328
+Epoch: 0/50, step: 30/97, loss: 1.89243, accuracy: 0.32708
+Epoch: 0/50, step: 31/97, loss: 1.90678, accuracy: 0.32056
+Epoch: 0/50, step: 32/97, loss: 1.89752, accuracy: 0.32617
+Epoch: 0/50, step: 33/97, loss: 1.89813, accuracy: 0.32386
+Epoch: 0/50, step: 34/97, loss: 1.89019, accuracy: 0.32353
+Epoch: 0/50, step: 35/97, loss: 1.90214, accuracy: 0.31607
+Epoch: 0/50, step: 36/97, loss: 1.90595, accuracy: 0.31771
+Epoch: 0/50, step: 37/97, loss: 1.89800, accuracy: 0.32264
+Epoch: 0/50, step: 38/97, loss: 1.88818, accuracy: 0.32566
+Epoch: 0/50, step: 39/97, loss: 1.88561, accuracy: 0.32692
+Epoch: 0/50, step: 40/97, loss: 1.88042, accuracy: 0.32812
+Epoch: 0/50, step: 41/97, loss: 1.87754, accuracy: 0.33232
+Epoch: 0/50, step: 42/97, loss: 1.86304, accuracy: 0.33631
+Epoch: 0/50, step: 43/97, loss: 1.85554, accuracy: 0.33285
+Epoch: 0/50, step: 44/97, loss: 1.85403, accuracy: 0.33239
+Epoch: 0/50, step: 45/97, loss: 1.84674, accuracy: 0.33750
+Epoch: 0/50, step: 46/97, loss: 1.84609, accuracy: 0.34103
+Epoch: 0/50, step: 47/97, loss: 1.83661, accuracy: 0.34176
+Epoch: 0/50, step: 48/97, loss: 1.82798, accuracy: 0.34375
+Epoch: 0/50, step: 49/97, loss: 1.81373, accuracy: 0.34821
+Epoch: 0/50, step: 50/97, loss: 1.79356, accuracy: 0.35125
+Epoch: 0/50, step: 51/97, loss: 1.79495, accuracy: 0.35294
+Epoch: 0/50, step: 52/97, loss: 1.78059, accuracy: 0.35577
+Epoch: 0/50, step: 53/97, loss: 1.78413, accuracy: 0.35731
+Epoch: 0/50, step: 54/97, loss: 1.77152, accuracy: 0.35995
+Epoch: 0/50, step: 55/97, loss: 1.79538, accuracy: 0.35682
+Epoch: 0/50, step: 56/97, loss: 1.78770, accuracy: 0.36049
+Epoch: 0/50, step: 57/97, loss: 1.78773, accuracy: 0.35746
+Epoch: 0/50, step: 58/97, loss: 1.79305, accuracy: 0.35884
+Epoch: 0/50, step: 59/97, loss: 1.79090, accuracy: 0.35805
+Epoch: 0/50, step: 60/97, loss: 1.78632, accuracy: 0.36146
+Epoch: 0/50, step: 61/97, loss: 1.78525, accuracy: 0.36373
+Epoch: 0/50, step: 62/97, loss: 1.78044, accuracy: 0.36794
+Epoch: 0/50, step: 63/97, loss: 1.77723, accuracy: 0.37103
+Epoch: 0/50, step: 64/97, loss: 1.76560, accuracy: 0.37500
+Epoch: 0/50, step: 65/97, loss: 1.76255, accuracy: 0.37500
+Epoch: 0/50, step: 66/97, loss: 1.76819, accuracy: 0.37311
+Epoch: 0/50, step: 67/97, loss: 1.75836, accuracy: 0.37593
+Epoch: 0/50, step: 68/97, loss: 1.75406, accuracy: 0.37684
+Epoch: 0/50, step: 69/97, loss: 1.75111, accuracy: 0.37591
+Epoch: 0/50, step: 70/97, loss: 1.73863, accuracy: 0.37857
+Epoch: 0/50, step: 71/97, loss: 1.74165, accuracy: 0.37852
+Epoch: 0/50, step: 72/97, loss: 1.73499, accuracy: 0.37934
+Epoch: 0/50, step: 73/97, loss: 1.73192, accuracy: 0.38271
+Epoch: 0/50, step: 74/97, loss: 1.72976, accuracy: 0.38345
+Epoch: 0/50, step: 75/97, loss: 1.72599, accuracy: 0.38500
+Epoch: 0/50, step: 76/97, loss: 1.72845, accuracy: 0.38569
+Epoch: 0/50, step: 77/97, loss: 1.73162, accuracy: 0.38474
+Epoch: 0/50, step: 78/97, loss: 1.73275, accuracy: 0.38542
+Epoch: 0/50, step: 79/97, loss: 1.72407, accuracy: 0.38766
+Epoch: 0/50, step: 80/97, loss: 1.72365, accuracy: 0.38750
+Epoch: 0/50, step: 81/97, loss: 1.72184, accuracy: 0.38812
+Epoch: 0/50, step: 82/97, loss: 1.72289, accuracy: 0.38796
+Epoch: 0/50, step: 83/97, loss: 1.72219, accuracy: 0.39006
+Epoch: 0/50, step: 84/97, loss: 1.72355, accuracy: 0.38914
+Epoch: 0/50, step: 85/97, loss: 1.71688, accuracy: 0.39191
+Epoch: 0/50, step: 86/97, loss: 1.70992, accuracy: 0.39390
+Epoch: 0/50, step: 87/97, loss: 1.70371, accuracy: 0.39440
+Epoch: 0/50, step: 88/97, loss: 1.69755, accuracy: 0.39631
+Epoch: 0/50, step: 89/97, loss: 1.69058, accuracy: 0.39747
+Epoch: 0/50, step: 90/97, loss: 1.68822, accuracy: 0.39792
+Epoch: 0/50, step: 91/97, loss: 1.68426, accuracy: 0.39904
+Epoch: 0/50, step: 92/97, loss: 1.68124, accuracy: 0.40014
+Epoch: 0/50, step: 93/97, loss: 1.68155, accuracy: 0.39919
+Epoch: 0/50, step: 94/97, loss: 1.68057, accuracy: 0.39894
+Epoch: 0/50, step: 95/97, loss: 1.67340, accuracy: 0.40066
+Epoch: 0/50, step: 96/97, loss: 1.67723, accuracy: 0.39909
+Epoch: 0/50, step: 97/97, loss: 1.67672, accuracy: 0.39857
+Epoch: 0/50, train loss: 1.67672, train accuracy: 0.39857, valid loss: 2217180928.00000, valid accuracy: 0.26562
+Epoch: 0/50, step: 1/100, loss: 2.78398, accuracy: 0.18750
+Epoch: 0/50, step: 2/100, loss: 2.56370, accuracy: 0.21875
+Epoch: 0/50, step: 3/100, loss: 2.17473, accuracy: 0.33333
+Epoch: 0/50, step: 4/100, loss: 2.08769, accuracy: 0.32812
+Epoch: 0/50, step: 5/100, loss: 1.89755, accuracy: 0.36250
+Epoch: 0/50, step: 6/100, loss: 1.96149, accuracy: 0.34375
+Epoch: 0/50, step: 7/100, loss: 1.84641, accuracy: 0.34821
+Epoch: 0/50, step: 8/100, loss: 1.78594, accuracy: 0.32812
+Epoch: 0/50, step: 9/100, loss: 1.74624, accuracy: 0.33333
+Epoch: 0/50, step: 10/100, loss: 1.76490, accuracy: 0.34375
+Epoch: 0/50, step: 11/100, loss: 1.74939, accuracy: 0.35227
+Epoch: 0/50, step: 12/100, loss: 1.72574, accuracy: 0.35417
+Epoch: 0/50, step: 13/100, loss: 1.72145, accuracy: 0.35096
+Epoch: 0/50, step: 14/100, loss: 1.73743, accuracy: 0.36607
+Epoch: 0/50, step: 15/100, loss: 1.71850, accuracy: 0.37083
+Epoch: 0/50, step: 16/100, loss: 1.71254, accuracy: 0.38281
+Epoch: 0/50, step: 17/100, loss: 1.69372, accuracy: 0.38603
+Epoch: 0/50, step: 18/100, loss: 1.66184, accuracy: 0.40625
+Epoch: 0/50, step: 19/100, loss: 1.67989, accuracy: 0.40789
+Epoch: 0/50, step: 20/100, loss: 1.64485, accuracy: 0.41250
+Epoch: 0/50, step: 21/100, loss: 1.66744, accuracy: 0.40774
+Epoch: 0/50, step: 22/100, loss: 1.70332, accuracy: 0.39489
+Epoch: 0/50, step: 23/100, loss: 1.68784, accuracy: 0.40489
+Epoch: 0/50, step: 24/100, loss: 1.67799, accuracy: 0.40885
+Epoch: 0/50, step: 25/100, loss: 1.67220, accuracy: 0.41250
+Epoch: 0/50, step: 26/100, loss: 1.65492, accuracy: 0.42067
+Epoch: 0/50, step: 27/100, loss: 1.62248, accuracy: 0.42824
+Epoch: 0/50, step: 28/100, loss: 1.60734, accuracy: 0.43527
+Epoch: 0/50, step: 29/100, loss: 1.59676, accuracy: 0.43750
+Epoch: 0/50, step: 30/100, loss: 1.58364, accuracy: 0.44583
+Epoch: 0/50, step: 31/100, loss: 1.56189, accuracy: 0.45363
+Epoch: 0/50, step: 32/100, loss: 1.56286, accuracy: 0.45312
+Epoch: 0/50, step: 33/100, loss: 1.56897, accuracy: 0.45076
+Epoch: 0/50, step: 34/100, loss: 1.57113, accuracy: 0.44669
+Epoch: 0/50, step: 35/100, loss: 1.56509, accuracy: 0.44464
+Epoch: 0/50, step: 36/100, loss: 1.55224, accuracy: 0.44965
+Epoch: 0/50, step: 37/100, loss: 1.53397, accuracy: 0.45101
+Epoch: 0/50, step: 38/100, loss: 1.53416, accuracy: 0.45395
+Epoch: 0/50, step: 39/100, loss: 1.52344, accuracy: 0.45353
+Epoch: 0/50, step: 40/100, loss: 1.53504, accuracy: 0.45000
+Epoch: 0/50, step: 41/100, loss: 1.52478, accuracy: 0.45427
+Epoch: 0/50, step: 42/100, loss: 1.53169, accuracy: 0.45238
+Epoch: 0/50, step: 43/100, loss: 1.54740, accuracy: 0.44622
+Epoch: 0/50, step: 44/100, loss: 1.54654, accuracy: 0.44460
+Epoch: 0/50, step: 45/100, loss: 1.54248, accuracy: 0.44167
+Epoch: 0/50, step: 46/100, loss: 1.55137, accuracy: 0.44022
+Epoch: 0/50, step: 47/100, loss: 1.55603, accuracy: 0.43883
+Epoch: 0/50, step: 48/100, loss: 1.55557, accuracy: 0.43750
+Epoch: 0/50, step: 49/100, loss: 1.55369, accuracy: 0.43367
+Epoch: 0/50, step: 50/100, loss: 1.54771, accuracy: 0.43750
+Epoch: 0/50, step: 51/100, loss: 1.53637, accuracy: 0.43995
+Epoch: 0/50, step: 52/100, loss: 1.53382, accuracy: 0.43870
+Epoch: 0/50, step: 53/100, loss: 1.53934, accuracy: 0.43396
+Epoch: 0/50, step: 54/100, loss: 1.53334, accuracy: 0.43287
+Epoch: 0/50, step: 55/100, loss: 1.53048, accuracy: 0.43295
+Epoch: 0/50, step: 56/100, loss: 1.52263, accuracy: 0.43862
+Epoch: 0/50, step: 57/100, loss: 1.51324, accuracy: 0.43969
+Epoch: 0/50, step: 58/100, loss: 1.51297, accuracy: 0.43966
+Epoch: 0/50, step: 59/100, loss: 1.50745, accuracy: 0.44068
+Epoch: 0/50, step: 60/100, loss: 1.51104, accuracy: 0.43750
+Epoch: 0/50, step: 61/100, loss: 1.50255, accuracy: 0.44160
+Epoch: 0/50, step: 62/100, loss: 1.50228, accuracy: 0.44052
+Epoch: 0/50, step: 63/100, loss: 1.50586, accuracy: 0.44345
+Epoch: 0/50, step: 64/100, loss: 1.50313, accuracy: 0.43945
+Epoch: 0/50, step: 65/100, loss: 1.49285, accuracy: 0.44135
+Epoch: 0/50, step: 66/100, loss: 1.49685, accuracy: 0.44318
+Epoch: 0/50, step: 67/100, loss: 1.49162, accuracy: 0.44590
+Epoch: 0/50, step: 68/100, loss: 1.48412, accuracy: 0.44577
+Epoch: 0/50, step: 69/100, loss: 1.47916, accuracy: 0.44837
+Epoch: 0/50, step: 70/100, loss: 1.47743, accuracy: 0.44732
+Epoch: 0/50, step: 71/100, loss: 1.47351, accuracy: 0.44894
+Epoch: 0/50, step: 72/100, loss: 1.48072, accuracy: 0.44705
+Epoch: 0/50, step: 73/100, loss: 1.47914, accuracy: 0.44777
+Epoch: 0/50, step: 74/100, loss: 1.47606, accuracy: 0.44848
+Epoch: 0/50, step: 75/100, loss: 1.46864, accuracy: 0.45250
+Epoch: 0/50, step: 76/100, loss: 1.45618, accuracy: 0.45724
+Epoch: 0/50, step: 77/100, loss: 1.45314, accuracy: 0.45779
+Epoch: 0/50, step: 78/100, loss: 1.45156, accuracy: 0.45913
+Epoch: 0/50, step: 79/100, loss: 1.45657, accuracy: 0.45886
+Epoch: 0/50, step: 80/100, loss: 1.45533, accuracy: 0.45547
+Epoch: 0/50, step: 81/100, loss: 1.45634, accuracy: 0.45448
+Epoch: 0/50, step: 82/100, loss: 1.44924, accuracy: 0.45732
+Epoch: 0/50, step: 83/100, loss: 1.45933, accuracy: 0.45557
+Epoch: 0/50, step: 84/100, loss: 1.47797, accuracy: 0.45089
+Epoch: 0/50, step: 85/100, loss: 1.47247, accuracy: 0.45221
+Epoch: 0/50, step: 86/100, loss: 1.46819, accuracy: 0.45058
+Epoch: 0/50, step: 87/100, loss: 1.47019, accuracy: 0.45187
+Epoch: 0/50, step: 88/100, loss: 1.46659, accuracy: 0.45384
+Epoch: 0/50, step: 89/100, loss: 1.45793, accuracy: 0.45506
+Epoch: 0/50, step: 90/100, loss: 1.45949, accuracy: 0.45556
+Epoch: 0/50, step: 91/100, loss: 1.46365, accuracy: 0.45536
+Epoch: 0/50, step: 92/100, loss: 1.45943, accuracy: 0.45516
+Epoch: 0/50, step: 93/100, loss: 1.45507, accuracy: 0.45699
+Epoch: 0/50, step: 94/100, loss: 1.44906, accuracy: 0.45811
+Epoch: 0/50, step: 95/100, loss: 1.44595, accuracy: 0.45724
+Epoch: 0/50, step: 96/100, loss: 1.43795, accuracy: 0.45898
+Epoch: 0/50, step: 97/100, loss: 1.43559, accuracy: 0.45941
+Epoch: 0/50, step: 98/100, loss: 1.43291, accuracy: 0.46110
+Epoch: 0/50, step: 99/100, loss: 1.43634, accuracy: 0.46212
+Epoch: 0/50, step: 100/100, loss: 1.43667, accuracy: 0.46144
+Epoch: 0/50, train loss: 1.43667, train accuracy: 0.46144, valid loss: 2978766.50000, valid accuracy: 0.22613
+Epoch: 0/50, step: 1/106, loss: 2.76506, accuracy: 0.12500
+Epoch: 0/50, step: 2/106, loss: 2.11829, accuracy: 0.34375
+Epoch: 0/50, step: 3/106, loss: 1.98271, accuracy: 0.35417
+Epoch: 0/50, step: 4/106, loss: 1.88649, accuracy: 0.31250
+Epoch: 0/50, step: 5/106, loss: 1.91762, accuracy: 0.27500
+Epoch: 0/50, step: 6/106, loss: 1.91240, accuracy: 0.30208
+Epoch: 0/50, step: 7/106, loss: 1.84390, accuracy: 0.32143
+Epoch: 0/50, step: 8/106, loss: 1.77020, accuracy: 0.32031
+Epoch: 0/50, step: 9/106, loss: 1.69861, accuracy: 0.32639
+Epoch: 0/50, step: 10/106, loss: 1.64936, accuracy: 0.33750
+Epoch: 0/50, step: 11/106, loss: 1.71373, accuracy: 0.32955
+Epoch: 0/50, step: 12/106, loss: 1.70670, accuracy: 0.34375
+Epoch: 0/50, step: 13/106, loss: 1.70462, accuracy: 0.36058
+Epoch: 0/50, step: 14/106, loss: 1.70194, accuracy: 0.36161
+Epoch: 0/50, step: 15/106, loss: 1.69298, accuracy: 0.35833
+Epoch: 0/50, step: 16/106, loss: 1.70583, accuracy: 0.35156
+Epoch: 0/50, step: 17/106, loss: 1.72017, accuracy: 0.35662
+Epoch: 0/50, step: 18/106, loss: 1.72239, accuracy: 0.36111
+Epoch: 0/50, step: 19/106, loss: 1.71345, accuracy: 0.36842
+Epoch: 0/50, step: 20/106, loss: 1.75583, accuracy: 0.37187
+Epoch: 0/50, step: 21/106, loss: 1.75164, accuracy: 0.37202
+Epoch: 0/50, step: 22/106, loss: 1.75541, accuracy: 0.37500
+Epoch: 0/50, step: 23/106, loss: 1.76811, accuracy: 0.37500
+Epoch: 0/50, step: 24/106, loss: 1.78489, accuracy: 0.38021
+Epoch: 0/50, step: 25/106, loss: 1.79437, accuracy: 0.38000
+Epoch: 0/50, step: 26/106, loss: 1.81353, accuracy: 0.37500
+Epoch: 0/50, step: 27/106, loss: 1.79729, accuracy: 0.37500
+Epoch: 0/50, step: 28/106, loss: 1.81229, accuracy: 0.37277
+Epoch: 0/50, step: 29/106, loss: 1.80035, accuracy: 0.37284
+Epoch: 0/50, step: 30/106, loss: 1.81127, accuracy: 0.36875
+Epoch: 0/50, step: 31/106, loss: 1.81076, accuracy: 0.37298
+Epoch: 0/50, step: 32/106, loss: 1.81746, accuracy: 0.37500
+Epoch: 0/50, step: 33/106, loss: 1.80222, accuracy: 0.37879
+Epoch: 0/50, step: 34/106, loss: 1.81633, accuracy: 0.37500
+Epoch: 0/50, step: 35/106, loss: 1.82040, accuracy: 0.36964
+Epoch: 0/50, step: 36/106, loss: 1.81680, accuracy: 0.36979
+Epoch: 0/50, step: 37/106, loss: 1.80602, accuracy: 0.36993
+Epoch: 0/50, step: 38/106, loss: 1.81855, accuracy: 0.36842
+Epoch: 0/50, step: 39/106, loss: 1.80477, accuracy: 0.37019
+Epoch: 0/50, step: 40/106, loss: 1.81450, accuracy: 0.37187
+Epoch: 0/50, step: 41/106, loss: 1.80834, accuracy: 0.37043
+Epoch: 0/50, step: 42/106, loss: 1.79717, accuracy: 0.37054
+Epoch: 0/50, step: 43/106, loss: 1.79387, accuracy: 0.36919
+Epoch: 0/50, step: 44/106, loss: 1.78168, accuracy: 0.37074
+Epoch: 0/50, step: 45/106, loss: 1.76429, accuracy: 0.37361
+Epoch: 0/50, step: 46/106, loss: 1.75739, accuracy: 0.37500
+Epoch: 0/50, step: 47/106, loss: 1.76141, accuracy: 0.37500
+Epoch: 0/50, step: 48/106, loss: 1.76250, accuracy: 0.37370
+Epoch: 0/50, step: 49/106, loss: 1.75900, accuracy: 0.37372
+Epoch: 0/50, step: 50/106, loss: 1.77417, accuracy: 0.36750
+Epoch: 0/50, step: 51/106, loss: 1.76464, accuracy: 0.37377
+Epoch: 0/50, step: 52/106, loss: 1.75950, accuracy: 0.37139
+Epoch: 0/50, step: 53/106, loss: 1.75016, accuracy: 0.37028
+Epoch: 0/50, step: 54/106, loss: 1.74539, accuracy: 0.36921
+Epoch: 0/50, step: 55/106, loss: 1.74702, accuracy: 0.37159
+Epoch: 0/50, step: 56/106, loss: 1.74050, accuracy: 0.37165
+Epoch: 0/50, step: 57/106, loss: 1.74449, accuracy: 0.37061
+Epoch: 0/50, step: 58/106, loss: 1.73279, accuracy: 0.37177
+Epoch: 0/50, step: 59/106, loss: 1.73116, accuracy: 0.37076
+Epoch: 0/50, step: 60/106, loss: 1.72758, accuracy: 0.36979
+Epoch: 0/50, step: 61/106, loss: 1.71880, accuracy: 0.36988
+Epoch: 0/50, step: 62/106, loss: 1.71714, accuracy: 0.37097
+Epoch: 0/50, step: 63/106, loss: 1.70559, accuracy: 0.37302
+Epoch: 0/50, step: 64/106, loss: 1.72738, accuracy: 0.37109
+Epoch: 0/50, step: 65/106, loss: 1.72968, accuracy: 0.37019
+Epoch: 0/50, step: 66/106, loss: 1.72366, accuracy: 0.37311
+Epoch: 0/50, step: 67/106, loss: 1.72546, accuracy: 0.37500
+Epoch: 0/50, step: 68/106, loss: 1.72956, accuracy: 0.37684
+Epoch: 0/50, step: 69/106, loss: 1.73126, accuracy: 0.37862
+Epoch: 0/50, step: 70/106, loss: 1.72738, accuracy: 0.38125
+Epoch: 0/50, step: 71/106, loss: 1.72633, accuracy: 0.38116
+Epoch: 0/50, step: 72/106, loss: 1.72774, accuracy: 0.37934
+Epoch: 0/50, step: 73/106, loss: 1.72443, accuracy: 0.37928
+Epoch: 0/50, step: 74/106, loss: 1.72368, accuracy: 0.37838
+Epoch: 0/50, step: 75/106, loss: 1.72874, accuracy: 0.37833
+Epoch: 0/50, step: 76/106, loss: 1.72647, accuracy: 0.37500
+Epoch: 0/50, step: 77/106, loss: 1.72406, accuracy: 0.37662
+Epoch: 0/50, step: 78/106, loss: 1.72026, accuracy: 0.37821
+Epoch: 0/50, step: 79/106, loss: 1.72516, accuracy: 0.37896
+Epoch: 0/50, step: 80/106, loss: 1.72322, accuracy: 0.38047
+Epoch: 0/50, step: 81/106, loss: 1.72256, accuracy: 0.37886
+Epoch: 0/50, step: 82/106, loss: 1.71989, accuracy: 0.37652
+Epoch: 0/50, step: 83/106, loss: 1.72148, accuracy: 0.37651
+Epoch: 0/50, step: 84/106, loss: 1.71840, accuracy: 0.37946
+Epoch: 0/50, step: 85/106, loss: 1.71837, accuracy: 0.37868
+Epoch: 0/50, step: 86/106, loss: 1.71417, accuracy: 0.38009
+Epoch: 0/50, step: 87/106, loss: 1.71532, accuracy: 0.37931
+Epoch: 0/50, step: 88/106, loss: 1.71533, accuracy: 0.37855
+Epoch: 0/50, step: 89/106, loss: 1.71480, accuracy: 0.37992
+Epoch: 0/50, step: 90/106, loss: 1.71614, accuracy: 0.37986
+Epoch: 0/50, step: 91/106, loss: 1.71282, accuracy: 0.38187
+Epoch: 0/50, step: 92/106, loss: 1.70750, accuracy: 0.38315
+Epoch: 0/50, step: 93/106, loss: 1.71128, accuracy: 0.38441
+Epoch: 0/50, step: 94/106, loss: 1.71223, accuracy: 0.38431
+Epoch: 0/50, step: 95/106, loss: 1.71338, accuracy: 0.38355
+Epoch: 0/50, step: 96/106, loss: 1.71709, accuracy: 0.38346
+Epoch: 0/50, step: 97/106, loss: 1.71588, accuracy: 0.38338
+Epoch: 0/50, step: 98/106, loss: 1.71723, accuracy: 0.38329
+Epoch: 0/50, step: 99/106, loss: 1.71417, accuracy: 0.38384
+Epoch: 0/50, step: 100/106, loss: 1.72090, accuracy: 0.38125
+Epoch: 0/50, step: 101/106, loss: 1.72225, accuracy: 0.37995
+Epoch: 0/50, step: 102/106, loss: 1.72413, accuracy: 0.37929
+Epoch: 0/50, step: 103/106, loss: 1.72302, accuracy: 0.37925
+Epoch: 0/50, step: 104/106, loss: 1.71953, accuracy: 0.38041
+Epoch: 0/50, step: 105/106, loss: 1.72018, accuracy: 0.37917
+Epoch: 0/50, step: 106/106, loss: 1.71429, accuracy: 0.37972
+Epoch: 0/50, train loss: 1.71429, train accuracy: 0.37972, valid loss: 372.71143, valid accuracy: 0.10849
+Epoch: 0/50, step: 1/103, loss: 1.74470, accuracy: 0.25000
+Epoch: 0/50, step: 2/103, loss: 2.40726, accuracy: 0.25000
+Epoch: 0/50, step: 3/103, loss: 2.32323, accuracy: 0.31250
+Epoch: 0/50, step: 4/103, loss: 2.16630, accuracy: 0.28125
+Epoch: 0/50, step: 5/103, loss: 2.14890, accuracy: 0.28750
+Epoch: 0/50, step: 6/103, loss: 2.20007, accuracy: 0.27083
+Epoch: 0/50, step: 7/103, loss: 2.09959, accuracy: 0.28571
+Epoch: 0/50, step: 8/103, loss: 2.01196, accuracy: 0.31250
+Epoch: 0/50, step: 9/103, loss: 2.02939, accuracy: 0.31250
+Epoch: 0/50, step: 10/103, loss: 1.97575, accuracy: 0.32500
+Epoch: 0/50, step: 11/103, loss: 1.99557, accuracy: 0.31818
+Epoch: 0/50, step: 12/103, loss: 1.97499, accuracy: 0.31250
+Epoch: 0/50, step: 13/103, loss: 1.97734, accuracy: 0.31731
+Epoch: 0/50, step: 14/103, loss: 1.96997, accuracy: 0.30804
+Epoch: 0/50, step: 15/103, loss: 1.93937, accuracy: 0.32083
+Epoch: 0/50, step: 16/103, loss: 1.91598, accuracy: 0.32422
+Epoch: 0/50, step: 17/103, loss: 1.94461, accuracy: 0.33088
+Epoch: 0/50, step: 18/103, loss: 1.98732, accuracy: 0.32639
+Epoch: 0/50, step: 19/103, loss: 1.99269, accuracy: 0.31579
+Epoch: 0/50, step: 20/103, loss: 1.97646, accuracy: 0.33125
+Epoch: 0/50, step: 21/103, loss: 2.01978, accuracy: 0.33333
+Epoch: 0/50, step: 22/103, loss: 2.01830, accuracy: 0.34375
+Epoch: 0/50, step: 23/103, loss: 2.01542, accuracy: 0.34783
+Epoch: 0/50, step: 24/103, loss: 1.99726, accuracy: 0.35156
+Epoch: 0/50, step: 25/103, loss: 1.99600, accuracy: 0.35250
+Epoch: 0/50, step: 26/103, loss: 1.99005, accuracy: 0.35817
+Epoch: 0/50, step: 27/103, loss: 1.98385, accuracy: 0.36111
+Epoch: 0/50, step: 28/103, loss: 1.96990, accuracy: 0.36607
+Epoch: 0/50, step: 29/103, loss: 1.95126, accuracy: 0.36422
+Epoch: 0/50, step: 30/103, loss: 1.94279, accuracy: 0.36458
+Epoch: 0/50, step: 31/103, loss: 1.92294, accuracy: 0.36694
+Epoch: 0/50, step: 32/103, loss: 1.92648, accuracy: 0.36328
+Epoch: 0/50, step: 33/103, loss: 1.90775, accuracy: 0.37311
+Epoch: 0/50, step: 34/103, loss: 1.89703, accuracy: 0.38051
+Epoch: 0/50, step: 35/103, loss: 1.88405, accuracy: 0.37857
+Epoch: 0/50, step: 36/103, loss: 1.87527, accuracy: 0.38194
+Epoch: 0/50, step: 37/103, loss: 1.87152, accuracy: 0.38514
+Epoch: 0/50, step: 38/103, loss: 1.86046, accuracy: 0.38322
+Epoch: 0/50, step: 39/103, loss: 1.85201, accuracy: 0.38462
+Epoch: 0/50, step: 40/103, loss: 1.83469, accuracy: 0.38906
+Epoch: 0/50, step: 41/103, loss: 1.85024, accuracy: 0.38262
+Epoch: 0/50, step: 42/103, loss: 1.86312, accuracy: 0.38244
+Epoch: 0/50, step: 43/103, loss: 1.85231, accuracy: 0.38517
+Epoch: 0/50, step: 44/103, loss: 1.86457, accuracy: 0.38068
+Epoch: 0/50, step: 45/103, loss: 1.87832, accuracy: 0.37639
+Epoch: 0/50, step: 46/103, loss: 1.87137, accuracy: 0.37772
+Epoch: 0/50, step: 47/103, loss: 1.86615, accuracy: 0.37899
+Epoch: 0/50, step: 48/103, loss: 1.86855, accuracy: 0.37500
+Epoch: 0/50, step: 49/103, loss: 1.87307, accuracy: 0.37500
+Epoch: 0/50, step: 50/103, loss: 1.85946, accuracy: 0.38000
+Epoch: 0/50, step: 51/103, loss: 1.84548, accuracy: 0.38480
+Epoch: 0/50, step: 52/103, loss: 1.85123, accuracy: 0.38101
+Epoch: 0/50, step: 53/103, loss: 1.84527, accuracy: 0.38208
+Epoch: 0/50, step: 54/103, loss: 1.85403, accuracy: 0.38310
+Epoch: 0/50, step: 55/103, loss: 1.84683, accuracy: 0.38295
+Epoch: 0/50, step: 56/103, loss: 1.83677, accuracy: 0.38393
+Epoch: 0/50, step: 57/103, loss: 1.83156, accuracy: 0.38706
+Epoch: 0/50, step: 58/103, loss: 1.82656, accuracy: 0.38901
+Epoch: 0/50, step: 59/103, loss: 1.83124, accuracy: 0.38877
+Epoch: 0/50, step: 60/103, loss: 1.84113, accuracy: 0.38854
+Epoch: 0/50, step: 61/103, loss: 1.83522, accuracy: 0.39242
+Epoch: 0/50, step: 62/103, loss: 1.83026, accuracy: 0.39415
+Epoch: 0/50, step: 63/103, loss: 1.82454, accuracy: 0.39484
+Epoch: 0/50, step: 64/103, loss: 1.82515, accuracy: 0.39355
+Epoch: 0/50, step: 65/103, loss: 1.81656, accuracy: 0.39615
+Epoch: 0/50, step: 66/103, loss: 1.81117, accuracy: 0.39489
+Epoch: 0/50, step: 67/103, loss: 1.80607, accuracy: 0.39646
+Epoch: 0/50, step: 68/103, loss: 1.80472, accuracy: 0.39798
+Epoch: 0/50, step: 69/103, loss: 1.80641, accuracy: 0.39855
+Epoch: 0/50, step: 70/103, loss: 1.80633, accuracy: 0.40000
+Epoch: 0/50, step: 71/103, loss: 1.80535, accuracy: 0.40053
+Epoch: 0/50, step: 72/103, loss: 1.79888, accuracy: 0.40017
+Epoch: 0/50, step: 73/103, loss: 1.80055, accuracy: 0.40068
+Epoch: 0/50, step: 74/103, loss: 1.79729, accuracy: 0.39949
+Epoch: 0/50, step: 75/103, loss: 1.79406, accuracy: 0.40167
+Epoch: 0/50, step: 76/103, loss: 1.78865, accuracy: 0.40049
+Epoch: 0/50, step: 77/103, loss: 1.78444, accuracy: 0.39773
+Epoch: 0/50, step: 78/103, loss: 1.78578, accuracy: 0.39583
+Epoch: 0/50, step: 79/103, loss: 1.79145, accuracy: 0.39320
+Epoch: 0/50, step: 80/103, loss: 1.79091, accuracy: 0.39375
+Epoch: 0/50, step: 81/103, loss: 1.79365, accuracy: 0.39352
+Epoch: 0/50, step: 82/103, loss: 1.78995, accuracy: 0.39405
+Epoch: 0/50, step: 83/103, loss: 1.78722, accuracy: 0.39533
+Epoch: 0/50, step: 84/103, loss: 1.78480, accuracy: 0.39286
+Epoch: 0/50, step: 85/103, loss: 1.78002, accuracy: 0.39485
+Epoch: 0/50, step: 86/103, loss: 1.77861, accuracy: 0.39535
+Epoch: 0/50, step: 87/103, loss: 1.78048, accuracy: 0.39799
+Epoch: 0/50, step: 88/103, loss: 1.77833, accuracy: 0.39915
+Epoch: 0/50, step: 89/103, loss: 1.77627, accuracy: 0.40239
+Epoch: 0/50, step: 90/103, loss: 1.78298, accuracy: 0.40069
+Epoch: 0/50, step: 91/103, loss: 1.78591, accuracy: 0.40110
+Epoch: 0/50, step: 92/103, loss: 1.78410, accuracy: 0.40149
+Epoch: 0/50, step: 93/103, loss: 1.78888, accuracy: 0.40188
+Epoch: 0/50, step: 94/103, loss: 1.78687, accuracy: 0.40093
+Epoch: 0/50, step: 95/103, loss: 1.78156, accuracy: 0.40329
+Epoch: 0/50, step: 96/103, loss: 1.77427, accuracy: 0.40625
+Epoch: 0/50, step: 97/103, loss: 1.76574, accuracy: 0.40786
+Epoch: 0/50, step: 98/103, loss: 1.76258, accuracy: 0.40944
+Epoch: 0/50, step: 99/103, loss: 1.75698, accuracy: 0.41035
+Epoch: 0/50, step: 100/103, loss: 1.76381, accuracy: 0.40938
+Epoch: 0/50, step: 101/103, loss: 1.76174, accuracy: 0.40780
+Epoch: 0/50, step: 102/103, loss: 1.75606, accuracy: 0.40993
+Epoch: 0/50, step: 103/103, loss: 1.75825, accuracy: 0.40917
+Epoch: 0/50, train loss: 1.75825, train accuracy: 0.40917, valid loss: 278176.59375, valid accuracy: 0.19118
+Epoch: 0/50, step: 1/118, loss: 2.64099, accuracy: 0.18750
+Epoch: 0/50, step: 2/118, loss: 2.05242, accuracy: 0.31250
+Epoch: 0/50, step: 3/118, loss: 2.04810, accuracy: 0.25000
+Epoch: 0/50, step: 4/118, loss: 2.00442, accuracy: 0.21875
+Epoch: 0/50, step: 5/118, loss: 1.90657, accuracy: 0.21250
+Epoch: 0/50, step: 6/118, loss: 1.82020, accuracy: 0.22917
+Epoch: 0/50, step: 7/118, loss: 1.77748, accuracy: 0.25000
+Epoch: 0/50, step: 8/118, loss: 1.76654, accuracy: 0.27344
+Epoch: 0/50, step: 9/118, loss: 1.90638, accuracy: 0.27083
+Epoch: 0/50, step: 10/118, loss: 1.88167, accuracy: 0.27500
+Epoch: 0/50, step: 11/118, loss: 1.84115, accuracy: 0.27841
+Epoch: 0/50, step: 12/118, loss: 1.85680, accuracy: 0.28646
+Epoch: 0/50, step: 13/118, loss: 1.83627, accuracy: 0.30769
+Epoch: 0/50, step: 14/118, loss: 1.84914, accuracy: 0.32143
+Epoch: 0/50, step: 15/118, loss: 1.81362, accuracy: 0.32500
+Epoch: 0/50, step: 16/118, loss: 1.77056, accuracy: 0.33984
+Epoch: 0/50, step: 17/118, loss: 1.74715, accuracy: 0.34191
+Epoch: 0/50, step: 18/118, loss: 1.75120, accuracy: 0.33681
+Epoch: 0/50, step: 19/118, loss: 1.73558, accuracy: 0.33224
+Epoch: 0/50, step: 20/118, loss: 1.73097, accuracy: 0.33750
+Epoch: 0/50, step: 21/118, loss: 1.74368, accuracy: 0.33631
+Epoch: 0/50, step: 22/118, loss: 1.74502, accuracy: 0.33239
+Epoch: 0/50, step: 23/118, loss: 1.72984, accuracy: 0.33424
+Epoch: 0/50, step: 24/118, loss: 1.72337, accuracy: 0.33594
+Epoch: 0/50, step: 25/118, loss: 1.74355, accuracy: 0.33500
+Epoch: 0/50, step: 26/118, loss: 1.73915, accuracy: 0.33654
+Epoch: 0/50, step: 27/118, loss: 1.72703, accuracy: 0.34028
+Epoch: 0/50, step: 28/118, loss: 1.71821, accuracy: 0.33705
+Epoch: 0/50, step: 29/118, loss: 1.71347, accuracy: 0.33405
+Epoch: 0/50, step: 30/118, loss: 1.70457, accuracy: 0.33750
+Epoch: 0/50, step: 31/118, loss: 1.68992, accuracy: 0.33871
+Epoch: 0/50, step: 32/118, loss: 1.68452, accuracy: 0.33789
+Epoch: 0/50, step: 33/118, loss: 1.68153, accuracy: 0.33333
+Epoch: 0/50, step: 34/118, loss: 1.66692, accuracy: 0.33456
+Epoch: 0/50, step: 35/118, loss: 1.66229, accuracy: 0.33393
+Epoch: 0/50, step: 36/118, loss: 1.65328, accuracy: 0.33681
+Epoch: 0/50, step: 37/118, loss: 1.67253, accuracy: 0.33953
+Epoch: 0/50, step: 38/118, loss: 1.67601, accuracy: 0.34046
+Epoch: 0/50, step: 39/118, loss: 1.67605, accuracy: 0.33814
+Epoch: 0/50, step: 40/118, loss: 1.67352, accuracy: 0.34062
+Epoch: 0/50, step: 41/118, loss: 1.66082, accuracy: 0.34451
+Epoch: 0/50, step: 42/118, loss: 1.65694, accuracy: 0.34673
+Epoch: 0/50, step: 43/118, loss: 1.65962, accuracy: 0.34302
+Epoch: 0/50, step: 44/118, loss: 1.64974, accuracy: 0.34375
+Epoch: 0/50, step: 45/118, loss: 1.64285, accuracy: 0.34722
+Epoch: 0/50, step: 46/118, loss: 1.63508, accuracy: 0.34647
+Epoch: 0/50, step: 47/118, loss: 1.62617, accuracy: 0.34973
+Epoch: 0/50, step: 48/118, loss: 1.62011, accuracy: 0.35026
+Epoch: 0/50, step: 49/118, loss: 1.61533, accuracy: 0.35332
+Epoch: 0/50, step: 50/118, loss: 1.61248, accuracy: 0.35750
+Epoch: 0/50, step: 51/118, loss: 1.62822, accuracy: 0.35417
+Epoch: 0/50, step: 52/118, loss: 1.62890, accuracy: 0.35697
+Epoch: 0/50, step: 53/118, loss: 1.63276, accuracy: 0.35731
+Epoch: 0/50, step: 54/118, loss: 1.62592, accuracy: 0.36343
+Epoch: 0/50, step: 55/118, loss: 1.62475, accuracy: 0.36364
+Epoch: 0/50, step: 56/118, loss: 1.61230, accuracy: 0.36830
+Epoch: 0/50, step: 57/118, loss: 1.61276, accuracy: 0.36842
+Epoch: 0/50, step: 58/118, loss: 1.62335, accuracy: 0.36530
+Epoch: 0/50, step: 59/118, loss: 1.62584, accuracy: 0.36441
+Epoch: 0/50, step: 60/118, loss: 1.62776, accuracy: 0.36562

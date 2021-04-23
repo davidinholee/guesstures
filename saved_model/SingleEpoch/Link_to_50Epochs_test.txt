@@ -1,2 +1,0 @@
-50 Epochs Single Video Weights linked: 
-https://drive.google.com/drive/folders/1PQ_q5ShA2Lgep1AauGrL4up0w_Pd7VhO?usp=sharing
